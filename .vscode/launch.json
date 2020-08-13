@@ -1,0 +1,10 @@
+{
+  "configurations": [
+      {
+          "command": "npm run-script android",
+          "name": "Run android",
+          "request": "launch",
+          "type": "node-terminal"
+      }
+  ]
+}
