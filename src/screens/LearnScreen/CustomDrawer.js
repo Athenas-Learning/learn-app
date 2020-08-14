@@ -39,36 +39,38 @@ const CustomDrawer = (props) => {
             </View>
           </View>
 
-          <DrawerItem
-            activeTintColor="#ffffff"
-            inactiveTintColor="#ffffff"
-            activeBackgroundColor="#8D50F1"
-            inactiveBackgroundColor="#8D50F1"
-            labelStyle={styles.itemLabel}
-            style={styles.item}
-            label="Meu Perfil"
-          />
+          <View style={styles.menu}>
+            <DrawerItem
+              activeTintColor="#ffffff"
+              inactiveTintColor="#ffffff"
+              activeBackgroundColor="#8D50F1"
+              inactiveBackgroundColor="#8D50F1"
+              labelStyle={styles.itemLabel}
+              style={styles.item}
+              label="Meu Perfil"
+            />
 
-          <DrawerItemList
-            activeTintColor="#ffffff"
-            inactiveTintColor="#ffffff"
-            activeBackgroundColor="#8D50F1"
-            inactiveBackgroundColor="#8D50F1"
-            labelStyle={styles.itemLabel}
-            itemStyle={styles.item}
-            {...props}
-          />
+            <DrawerItemList
+              activeTintColor="#ffffff"
+              inactiveTintColor="#ffffff"
+              activeBackgroundColor="#8D50F1"
+              inactiveBackgroundColor="#8D50F1"
+              labelStyle={styles.itemLabel}
+              itemStyle={styles.item}
+              {...props}
+            />
 
-          <DrawerItem
-            label="Sair"
-            activeTintColor="#ffffff"
-            inactiveTintColor="#ffffff"
-            activeBackgroundColor="#8D50F1"
-            inactiveBackgroundColor="#8D50F1"
-            labelStyle={styles.itemLabel}
-            style={styles.item}
-            onPress={() => alert('Finge que saiu, ok?')}
-          />
+            <DrawerItem
+              label="Sair"
+              activeTintColor="#ffffff"
+              inactiveTintColor="#ffffff"
+              activeBackgroundColor="#8D50F1"
+              inactiveBackgroundColor="#8D50F1"
+              labelStyle={styles.itemLabel}
+              style={styles.item}
+              onPress={() => alert('Finge que saiu, ok?')}
+            />
+          </View>
         </SafeAreaView>
       </ScrollView>
 
@@ -116,14 +118,24 @@ const styles = StyleSheet.create({
     color: '#000000',
     fontSize: 20,
   },
+  menu: {
+    alignContent: 'stretch',
+    textAlign: 'center',
+    alignItems: 'stretch',
+    flexDirection: 'column',
+  },
   itemLabel: {
     marginLeft: 5,
     color: '#ffffff',
     fontSize: 16,
+    textAlign: 'center',
   },
   item: {
+    flex: 1,
+    textAlign: 'center',
     borderRadius: 100,
     elevation: 4,
+    alignItems: 'stretch',
   },
 });
 

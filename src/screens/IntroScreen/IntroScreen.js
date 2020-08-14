@@ -1,42 +1,60 @@
-import React from 'react';
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import React, {useRef} from 'react';
+import {View, Text, StyleSheet} from 'react-native';
+
+import Swiper from 'react-native-swiper';
+
+import {Skip} from '../../components/Skip';
 
 import {Step01Screen} from './Step01Screen';
 import {Step02Screen} from './Step02Screen';
 import {Step03Screen} from './Step03Screen';
 
-const Tab = createMaterialTopTabNavigator();
-
-const IntroScreen = () => {
+const IntroScreen = ({navigation, ...props}) => {
+  const swiperRef = useRef(null);
+  const setStep = (step)=>{
+    swiperRef.current.scrollBy(1);
+  };
   return (
-    <Tab.Navigator
-      initialRouteName="Step01"
-      style={{marginTop:-20}}
-      tabBarOptions={{
-        showIcon: false,
-        showLabel: false,
-        tabStyle: {height: 0},
-        iconStyle: {height: 0},
-        labelStyle: {height: 0},
-        tabBarVisible: false,
-      }}>
-      <Tab.Screen
-        name="Step01"
-        component={Step01Screen}
-        options={{tabBarVisible: false}}
-      />
-      <Tab.Screen
-        name="Step02"
-        component={Step02Screen}
-        options={{tabBarVisible: false}}
-      />
-      <Tab.Screen
-        name="Step03"
-        component={Step03Screen}
-        options={{tabBarVisible: false}}
-      />
-    </Tab.Navigator>
+    <View style={styles.root}>
+      <Skip onSkipPress={() => navigation.navigate('Login')} />
+      <Swiper
+        ref={swiperRef}
+        style={styles.wrapper}
+        showsButtons={true}
+        //index={step}
+        loop={false}>
+        <View style={styles.slide}>
+          <Step01Screen
+            onNextStepPress={() => setStep(0)}
+          />
+        </View>
+        <View style={styles.slide}>
+          <Step02Screen
+            onNextStepPress={() => setStep(1)}
+          />
+        </View>
+        <View style={styles.slide}>
+          <Step03Screen onNextStepPress={() => navigation.navigate('Login')} />
+        </View>
+      </Swiper>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'stretch',
+    flexDirection: 'column',
+  },
+  wrapper: {},
+  slide: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+  },
+});
 
 export {IntroScreen};

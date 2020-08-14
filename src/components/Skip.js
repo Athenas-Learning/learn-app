@@ -18,9 +18,7 @@ const Skip = ({onSkipPress, ...props}) => {
             <Image style={styles.logoImage} source={require('./logo.png')} />
           </View>
           <View style={styles.skip}>
-            <TouchableOpacity
-              style={styles.skipButton}
-              onPress={onSkipPress}>
+            <TouchableOpacity style={styles.skipButton} onPress={onSkipPress}>
               <Text>Pular</Text>
             </TouchableOpacity>
           </View>

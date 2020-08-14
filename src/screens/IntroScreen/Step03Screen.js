@@ -1,13 +1,11 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet, Button, ScrollView} from 'react-native';
-import {Skip} from '../../components/Skip';
 
 const Separator = () => <View style={styles.separator} />;
 
-const Step03Screen = ({navigation, ...props}) => {
+const Step03Screen = ({onNextStepPress, ...props}) => {
   return (
     <View>
-      <Skip onSkipPress={() => navigation.navigate('Login')} />
       <ScrollView>
         <View style={styles.root}>
           <Image source={require('./Step01.jpg')} />
@@ -32,7 +30,7 @@ const Step03Screen = ({navigation, ...props}) => {
           <Button
             title="Começar"
             style={{marginVertical: 15}}
-            onPress={() => navigation.navigate('Login')}
+            onPress={onNextStepPress}
           />
         </View>
       </ScrollView>
