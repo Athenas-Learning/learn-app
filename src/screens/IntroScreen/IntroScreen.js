@@ -1,17 +1,17 @@
-import React, {useRef} from 'react';
-import {View, Button, StyleSheet} from 'react-native';
+import React, { useRef } from 'react';
+import { View, Button, StyleSheet } from 'react-native';
 
 import Swiper from 'react-native-swiper';
 
-import {Skip} from '../../components/Skip';
+import { Skip } from '../../components/Skip';
 
-import {Step01Screen} from './Step01Screen';
-import {Step02Screen} from './Step02Screen';
-import {Step03Screen} from './Step03Screen';
+import { Step01Screen } from './Step01Screen';
+import { Step02Screen } from './Step02Screen';
+import { Step03Screen } from './Step03Screen';
 
-const IntroScreen = ({navigation, ...props}) => {
+const IntroScreen = ({ navigation, ...props }) => {
   const swiperRef = useRef(null);
-  const handleNextStep = ()=>{
+  const handleNextStep = () => {
     swiperRef.current.scrollBy(1);
   };
   return (
@@ -51,10 +51,10 @@ const styles = StyleSheet.create({
   wrapper: {},
   slide: {
     flex: 1,
+    marginTop: '10%',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
   },
 });
 
-export {IntroScreen};
+export { IntroScreen };

@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   root: {
@@ -37,13 +37,13 @@ const styles = StyleSheet.create({
   },
   loginLabel: {
     textAlign: 'center',
-    fontSize:16,
+    fontSize: 16,
     fontWeight: 'bold',
     color: '#fff',
   },
   googleLabel: {
     textAlign: 'center',
-    fontSize:16,
+    fontSize: 16,
     fontWeight: 'bold',
     color: '#000',
   },
@@ -53,18 +53,18 @@ const styles = StyleSheet.create({
     padding: 5,
     textAlign: 'center',
     color: '#fff',
-    fontSize:20,
+    fontSize: 20,
     fontWeight: 'bold',
-    margin: 15,
+    margin: 20,
   },
   forgotPasswordButton: {
     marginBottom: 5,
-    padding: 2,
+    padding: 8,
     textAlign: 'center',
     color: '#DB2D45',
-    fontSize:16,
+    fontSize: 16,
     fontWeight: 'bold',
   },
 });
 
-export {styles};
+export { styles };

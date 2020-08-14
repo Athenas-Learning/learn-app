@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-import {styles} from './style';
+import { styles } from './style';
 import {
   Keyboard,
   Text,
@@ -11,14 +11,14 @@ import {
   KeyboardAvoidingView,
   ScrollView,
 } from 'react-native';
-import {PublicHeader} from '../../components/PublicHeader';
+import { PublicHeader } from '../../components/PublicHeader';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Separator = () => <View style={styles.separator} />;
 
-const LoginScreen = ({navigation, ...props}) => {
-  const onLoginPress = () => {};
+const LoginScreen = ({ navigation, ...props }) => {
+  const onLoginPress = () => { };
 
   return (
     <KeyboardAvoidingView style={styles.root} behavior="padding">
@@ -28,9 +28,16 @@ const LoginScreen = ({navigation, ...props}) => {
         </View>
         <View style={styles.loginScreenContainer}>
           <Text style={styles.loginFormLabel}>Usuário</Text>
-          <TextInput style={styles.loginFormTextInput} />
+          <TextInput
+            style={styles.loginFormTextInput}
+            placeholder="Digite aqui seu usuário"
+          />
           <Text style={styles.loginFormLabel}>Senha</Text>
-          <TextInput style={styles.loginFormTextInput} secureTextEntry={true} />
+          <TextInput
+            style={styles.loginFormTextInput}
+            secureTextEntry={true}
+            placeholder="********"
+          />
           <TouchableOpacity onPress={() => navigation.navigate('PasswordRecovery')}>
             <Text style={styles.forgotPasswordButton}>Esqueci minha senha</Text>
           </TouchableOpacity>
@@ -72,4 +79,4 @@ const LoginScreen = ({navigation, ...props}) => {
   );
 };
 
-export {LoginScreen};
+export { LoginScreen };

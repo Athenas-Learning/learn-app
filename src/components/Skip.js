@@ -9,17 +9,21 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-const Skip = ({onSkipPress, ...props}) => {
+const Skip = ({ onSkipPress, ...props }) => {
   return (
     <View>
       <SafeAreaView>
         <View style={styles.container}>
           <View style={styles.logo}>
-            <Image style={styles.logoImage} source={require('./logo.png')} />
+            <Image style={styles.logoImage} source={require('../assets/images/logo.png')} />
           </View>
           <View style={styles.skip}>
             <TouchableOpacity style={styles.skipButton} onPress={onSkipPress}>
-              <Text>Pular</Text>
+              <Text style={{
+                marginTop: 15,
+                color: '#868686',
+                fontSize: 12,
+              }}>Pular</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -38,6 +42,8 @@ const styles = StyleSheet.create({
   skip: {},
   skipButton: {
     padding: 15,
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   logo: {
     padding: 15,
@@ -48,4 +54,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export {Skip};
+export { Skip };

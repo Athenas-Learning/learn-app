@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-const Header = ({navigation, ...props}) => {
+const Header = ({ navigation, ...props }) => {
   return (
     <View>
       <SafeAreaView>
@@ -22,7 +22,7 @@ const Header = ({navigation, ...props}) => {
             </TouchableOpacity>
           </View>
           <View style={styles.logo}>
-            <Image style={styles.logoImage} source={require('./logo.png')} />
+            <Image style={styles.logoImage} source={require('../assets/images/logo.png')} />
           </View>
         </View>
       </SafeAreaView>
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export {Header};
+export { Header };
