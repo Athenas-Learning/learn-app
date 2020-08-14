@@ -9,6 +9,9 @@ import {SplashScreen} from './src/screens/SplashScreen/SplashScreen';
 import {IntroScreen} from './src/screens/IntroScreen/IntroScreen';
 import {LoginScreen} from './src/screens/LoginScreen/LoginScreen';
 import {SignupScreen} from './src/screens/SignupScreen/SignupScreen';
+import {PasswordRecoveryScreen} from './src/screens/PasswordRecoveryScreen/PasswordRecoveryScreen';
+import {ValidationCodeScreen} from './src/screens/PasswordRecoveryScreen/ValidationCodeScreen';
+import {NewPasswordScreen} from './src/screens/PasswordRecoveryScreen/NewPasswordScreen';
 import {LearnScreen} from './src/screens/LearnScreen/LearnScreen';
 
 const Stack = createStackNavigator();
@@ -28,7 +31,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Login"
+        initialRouteName="Intro"
         screenOptions={{
           headerStyle: {
             backgroundColor: '#fff',
@@ -55,6 +58,27 @@ const App = () => {
             headerShown: false,
           }}
           component={SignupScreen}
+        />
+        <Stack.Screen
+          name="PasswordRecovery"
+          options={{
+            headerShown: false,
+          }}
+          component={PasswordRecoveryScreen}
+        />
+        <Stack.Screen
+          name="NewPassword"
+          options={{
+            headerShown: false,
+          }}
+          component={NewPasswordScreen}
+        />
+        <Stack.Screen
+          name="ValidationCode"
+          options={{
+            headerShown: false,
+          }}
+          component={ValidationCodeScreen}
         />
         <Stack.Screen
           name="Learn"

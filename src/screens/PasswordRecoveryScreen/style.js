@@ -1,6 +1,10 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
+  rootBlue: {
+    flex: 1,
+    backgroundColor: '#5577B6',
+  },
   root: {
     flex: 1,
   },
@@ -20,6 +24,9 @@ const styles = StyleSheet.create({
   loginFormLabel: {
     fontSize: 18,
   },
+  whiteLoginFormLabel: {
+    color: '#fff',
+  },
   loginFormTextInput: {
     height: 40,
     fontSize: 14,
@@ -27,6 +34,10 @@ const styles = StyleSheet.create({
     borderBottomColor: '#ccc',
     marginTop: 5,
     marginBottom: 5,
+  },
+  whiteLoginFormTextInput: {
+    color: '#000',
+    backgroundColor: '#fff',
   },
   separator: {
     marginVertical: 7,

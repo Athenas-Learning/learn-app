@@ -31,7 +31,7 @@ const LoginScreen = ({navigation, ...props}) => {
           <TextInput style={styles.loginFormTextInput} />
           <Text style={styles.loginFormLabel}>Senha</Text>
           <TextInput style={styles.loginFormTextInput} secureTextEntry={true} />
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('PasswordRecovery')}>
             <Text style={styles.forgotPasswordButton}>Esqueci minha senha</Text>
           </TouchableOpacity>
           <View style={styles.loginButton}>
@@ -49,9 +49,7 @@ const LoginScreen = ({navigation, ...props}) => {
               backgroundColor="#EFEFEF"
               color="#EB5757"
               onPress={() => navigation.navigate('Learn')}>
-              <Text style={styles.googleLabel}>
-                Login com Google
-              </Text>
+              <Text style={styles.googleLabel}>Login com Google</Text>
             </Icon.Button>
           </View>
           <Separator />

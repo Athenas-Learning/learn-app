@@ -45,8 +45,8 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   logoImage: {
-    width: 29,
-    height: 26,
+    width: 51,
+    height: 45,
   },
 });
 

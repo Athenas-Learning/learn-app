@@ -8,16 +8,16 @@ import {
   Image,
 } from 'react-native';
 
-const PublicHeader = ({title, ...props}) => {
+const PublicHeader = ({title, blue, ...props}) => {
   return (
     <View>
       <SafeAreaView>
         <View style={styles.container}>
           <View style={styles.logo}>
-            <Image style={styles.logoImage} source={require('./logo.png')} />
+            <Image style={styles.logoImage} source={blue ? require('./logo-white.png') : require('./logo.png')} />
           </View>
           <View style={styles.title}>
-            <Text style={styles.titleLabel}>{title}</Text>
+            <Text style={[styles.titleLabel, blue ? styles.titleLabelBlue : {}]}>{title}</Text>
           </View>
         </View>
       </SafeAreaView>
@@ -44,6 +44,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 3,
     fontSize: 20,
     fontWeight: 'bold',
+  },
+  titleLabelBlue: {
+    color: '#fff',
   },
   logo: {
     padding: 15,

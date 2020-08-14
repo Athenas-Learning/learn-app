@@ -6,55 +6,49 @@ import {
   Text,
   View,
   TextInput,
-  TouchableWithoutFeedback,
+  TouchableOpacity,
   Button,
   KeyboardAvoidingView,
   ScrollView,
 } from 'react-native';
+import {PublicHeader} from '../../components/PublicHeader';
 
-const Separator = () => <View style={styles.separator} />;
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const SignupScreen = ({navigation, ...props}) => {
+  const onLoginPress = () => {};
 
   return (
-    <KeyboardAvoidingView style={styles.containerView} behavior="padding">
-      <ScrollView>
-        <View style={styles.signupScreenContainer}>
-          <View style={styles.signupFormView}>
-            <Text style={styles.logoText}>Athenas Learning</Text>
-            <TextInput
-              placeholder="Nome completo"
-              placeholderColor="#c4c3cb"
-              style={styles.signupFormTextInput}
-            />
-            <TextInput
-              placeholder="Email"
-              placeholderColor="#c4c3cb"
-              style={styles.signupFormTextInput}
-            />
-            <TextInput
-              placeholder="Data de nascimento"
-              placeholderColor="#c4c3cb"
-              style={styles.signupFormTextInput}
-            />
-            <TextInput
-              placeholder="Password"
-              placeholderColor="#c4c3cb"
-              style={styles.signupFormTextInput}
-              secureTextEntry={true}
-            />
-            <Separator />
-            <Button title="Concluir cadastro"
-              onPress={() => navigation.navigate('Learn')}
-            />
-            <Separator />
-            <Button
-              title="Já sou cadastrado"
-              onPress={() => navigation.navigate('Login')}
-            />
+    <KeyboardAvoidingView style={styles.root} behavior="padding">
+      <View style={styles.containerView}>
+        <View style={styles.loginFormPadding}>
+          <PublicHeader title="Seus dados" />
+        </View>
+        <View style={styles.loginScreenContainer}>
+          <Text style={styles.loginFormLabel}>Nome</Text>
+          <TextInput style={styles.loginFormTextInput} />
+          <Text style={styles.loginFormLabel}>Sobrenome</Text>
+          <TextInput style={styles.loginFormTextInput} />
+          <Text style={styles.loginFormLabel}>E-mail</Text>
+          <TextInput style={styles.loginFormTextInput} />
+          <Text style={styles.loginFormLabel}>Ano escolar</Text>
+          <TextInput style={styles.loginFormTextInput} />
+          <Text style={styles.loginFormLabel}>Usuário</Text>
+          <TextInput style={styles.loginFormTextInput} />
+          <Text style={styles.loginFormLabel}>Senha</Text>
+          <TextInput style={styles.loginFormTextInput} secureTextEntry={true} />
+          <View style={styles.loginButton}>
+            <Icon.Button
+              name="lock"
+              backgroundColor="#3b5998"
+              onPress={() => navigation.navigate('Learn')}>
+              <Text style={styles.loginLabel}>Acessar</Text>
+            </Icon.Button>
           </View>
         </View>
-      </ScrollView>
+        <View style={styles.loginFormSignup}>
+        </View>
+      </View>
     </KeyboardAvoidingView>
   );
 };

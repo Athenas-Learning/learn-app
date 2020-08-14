@@ -8,7 +8,7 @@ const Step02Screen = ({onNextStepPress, ...props}) => {
     <View>
       <ScrollView>
         <View style={styles.root}>
-          <Image source={require('./Step01.jpg')} />
+          <Image source={require('./Step02.png')} />
           <Text style={{color: '#333333', fontSize: 30, marginTop: 15}}>
             Ensino
           </Text>
