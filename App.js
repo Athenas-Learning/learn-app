@@ -18,9 +18,9 @@ const App = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    setTimeout(() => {
-    setIsLoading(false);
-    }, 1000);
+    //setTimeout(() => {
+      setIsLoading(false);
+    //}, 1000);
   });
 
   if (isLoading) return <SplashScreen />;
@@ -28,7 +28,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Intro"
+        initialRouteName="Login"
         screenOptions={{
           headerStyle: {
             backgroundColor: '#fff',

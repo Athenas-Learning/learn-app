@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Button, StyleSheet} from 'react-native';
 
 import Swiper from 'react-native-swiper';
 
@@ -11,7 +11,7 @@ import {Step03Screen} from './Step03Screen';
 
 const IntroScreen = ({navigation, ...props}) => {
   const swiperRef = useRef(null);
-  const setStep = (step)=>{
+  const handleNextStep = ()=>{
     swiperRef.current.scrollBy(1);
   };
   return (
@@ -25,12 +25,12 @@ const IntroScreen = ({navigation, ...props}) => {
         loop={false}>
         <View style={styles.slide}>
           <Step01Screen
-            onNextStepPress={() => setStep(0)}
+            onNextStepPress={handleNextStep}
           />
         </View>
         <View style={styles.slide}>
           <Step02Screen
-            onNextStepPress={() => setStep(1)}
+            onNextStepPress={handleNextStep}
           />
         </View>
         <View style={styles.slide}>
