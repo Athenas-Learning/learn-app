@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-import {styles} from './style';
+import { styles } from './style';
 import {
   Keyboard,
   Text,
@@ -11,11 +11,11 @@ import {
   KeyboardAvoidingView,
   ScrollView,
 } from 'react-native';
-import {PublicHeader} from '../../components/PublicHeader';
+import { PublicHeader } from '../../components/PublicHeader';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const NewPasswordScreen = ({navigation, ...props}) => {
+const NewPasswordScreen = ({ navigation, ...props }) => {
   return (
     <KeyboardAvoidingView style={styles.rootBlue} behavior="padding">
       <View style={styles.containerView}>
@@ -30,7 +30,7 @@ const NewPasswordScreen = ({navigation, ...props}) => {
           <View style={styles.loginButton}>
             <Icon.Button
               name="lock"
-              backgroundColor="#3b5998"
+              backgroundColor="#F2C94C"
               onPress={() => navigation.navigate('Login')}>
               <Text style={styles.loginLabel}>Confirmar</Text>
             </Icon.Button>
@@ -43,4 +43,4 @@ const NewPasswordScreen = ({navigation, ...props}) => {
   );
 };
 
-export {NewPasswordScreen};
+export { NewPasswordScreen };
