@@ -1,18 +1,18 @@
 import 'react-native-gesture-handler';
 
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
-import { SplashScreen } from './src/screens/SplashScreen/SplashScreen';
-import { IntroScreen } from './src/screens/IntroScreen/IntroScreen';
-import { LoginScreen } from './src/screens/LoginScreen/LoginScreen';
-import { SignupScreen } from './src/screens/SignupScreen/SignupScreen';
-import { PasswordRecoveryScreen } from './src/screens/PasswordRecoveryScreen/PasswordRecoveryScreen';
-import { ValidationCodeScreen } from './src/screens/PasswordRecoveryScreen/ValidationCodeScreen';
-import { NewPasswordScreen } from './src/screens/PasswordRecoveryScreen/NewPasswordScreen';
-import { LearnScreen } from './src/screens/LearnScreen/LearnScreen';
+import {SplashScreen} from './src/screens/SplashScreen/SplashScreen';
+import {IntroScreen} from './src/screens/IntroScreen/IntroScreen';
+import {LoginScreen} from './src/screens/LoginScreen/LoginScreen';
+import {SignupScreen} from './src/screens/SignupScreen/SignupScreen';
+import {PasswordRecoveryScreen} from './src/screens/PasswordRecoveryScreen/PasswordRecoveryScreen';
+import {ValidationCodeScreen} from './src/screens/PasswordRecoveryScreen/ValidationCodeScreen';
+import {NewPasswordScreen} from './src/screens/PasswordRecoveryScreen/NewPasswordScreen';
+import {LearnScreen} from './src/screens/LearnScreen/LearnScreen';
 
 const Stack = createStackNavigator();
 
@@ -21,9 +21,9 @@ const App = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    //setTimeout(() => {
-    setIsLoading(false);
-    //}, 1000);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   });
 
   if (isLoading) return <SplashScreen />;
@@ -31,7 +31,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Intro"
+        initialRouteName="Learn"
         screenOptions={{
           headerStyle: {
             backgroundColor: '#fff',

@@ -8,19 +8,12 @@ import physicsIcon from '../../assets/images/physics_blue.png';
 import mathIcon from '../../assets/images/math_blue.png';
 
 import styles from './styles';
+import { Header } from '../../components/Header';
 
 function ChooseClass({ navigation, ...props }) {
     return (
         <>
-            <View style={styles.headerContainer}>
-                <Text style={styles.headerTitle}>
-                    Bem vindo, Lucas!
-                </Text>
-                <BorderlessButton>
-                    <Image source={menuImg} style={styles.menuHeader} />
-                </BorderlessButton>
-            </View>
-
+            <Header navigation={navigation} title={"Bem vindo, Lucas!"}/>
             <View style={styles.contentContainer}>
                 <Text style={styles.contentText}>
                     Conteúdos disponíveis para seus estudos

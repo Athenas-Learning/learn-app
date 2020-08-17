@@ -11,12 +11,12 @@ import styles from './styles';
 function HeaderLoggedIn({ title, navigation, ...props }) {
     return (
         <View style={styles.headerContainer}>
-            <BorderlessButton onPress={() => navigation.navigate('content')}>
-                <Image style={styles.goBackButton} source={goBackIcon} />
-            </BorderlessButton>
-            <Text style={styles.headerTitle}>{title}</Text>
             <BorderlessButton>
                 <Image source={menuImg} style={styles.menuHeader} />
+            </BorderlessButton>
+            <Text style={styles.headerTitle}>{title}</Text>
+            <BorderlessButton onPress={() => navigation.goBack()}>
+                <Text>Voltar</Text>
             </BorderlessButton>
         </View>
     );
