@@ -1,13 +1,10 @@
 import React from 'react';
 import {
   View,
-  ScrollView,
   SafeAreaView,
-  Avatar,
   Text,
   Divider,
   StyleSheet,
-  TouchableNativeFeedback,
 } from 'react-native';
 
 import {
@@ -16,12 +13,10 @@ import {
   DrawerItem,
 } from '@react-navigation/drawer';
 
-const ripple = TouchableNativeFeedback.Ripple('#adacac', false);
-
 const CustomDrawer = (props) => {
   return (
     <View style={styles.root}>
-      <ScrollView>
+      <DrawerContentScrollView>
         <SafeAreaView
           style={styles.container}
           forceInset={{top: 'always', horizontal: 'never'}}>
@@ -68,27 +63,11 @@ const CustomDrawer = (props) => {
               inactiveBackgroundColor="#8D50F1"
               labelStyle={styles.itemLabel}
               style={styles.item}
-              onPress={() => alert('Finge que saiu, ok?')}
+              onPress={() => props.navigation.navigate('Login')}
             />
           </View>
         </SafeAreaView>
-      </ScrollView>
-
-      <View elevation={6} style={{backgroundColor: '#ffffff'}}>
-        <TouchableNativeFeedback background={ripple}>
-          <View style={styles.containDrawerOption}>
-            <Text>Logout</Text>
-          </View>
-        </TouchableNativeFeedback>
-
-        <TouchableNativeFeedback background={ripple}>
-          <View style={styles.containDrawerOption}>
-            <Text style={{color: 'black', fontFamily: 'sans-serif-medium'}}>
-              Developer
-            </Text>
-          </View>
-        </TouchableNativeFeedback>
-      </View>
+      </DrawerContentScrollView>
     </View>
   );
 };
