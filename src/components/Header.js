@@ -11,7 +11,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import menuImg from '../assets/images/menu-icon.png';
 
-const Header = ({navigation, title, blue, ...props}) => {
+const Header = ({ navigation, title, blue, ...props }) => {
   return (
     <View>
       <SafeAreaView>
@@ -78,4 +78,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export {Header};
+export { Header };

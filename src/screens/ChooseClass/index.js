@@ -13,7 +13,7 @@ import { Header } from '../../components/Header';
 function ChooseClass({ navigation, ...props }) {
     return (
         <>
-            <Header navigation={navigation} title={"Bem vindo, Lucas!"}/>
+            <Header navigation={navigation} title={"Bem vindo, Lucas!"} />
             <View style={styles.contentContainer}>
                 <Text style={styles.contentText}>
                     Conteúdos disponíveis para seus estudos
