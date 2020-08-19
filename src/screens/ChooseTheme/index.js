@@ -5,6 +5,7 @@ import { RectButton, BorderlessButton } from 'react-native-gesture-handler';
 import { Header } from '../../components/Header';
 import FixedMenuBar from '../../components/FixedMenuBar';
 
+
 import blackHoleImg from '../../assets/images/black-hole.png';
 
 import styles from './styles';

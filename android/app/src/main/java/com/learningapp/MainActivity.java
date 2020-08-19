@@ -1,4 +1,4 @@
-package com.learningapp;
+package com.athenaslearning.studyapp;
 
 import com.facebook.react.ReactActivity;
 

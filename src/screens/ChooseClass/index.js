@@ -1,6 +1,6 @@
-import React from 'react';
-import { Text, Image, View } from 'react-native';
-import { BorderlessButton } from 'react-native-gesture-handler';
+import React, {useContext} from 'react';
+import {Text, Image, View} from 'react-native';
+import {BorderlessButton} from 'react-native-gesture-handler';
 
 import menuImg from '../../assets/images/menu-icon.png';
 
@@ -8,12 +8,14 @@ import physicsIcon from '../../assets/images/physics_blue.png';
 import mathIcon from '../../assets/images/math_blue.png';
 
 import styles from './styles';
-import { Header } from '../../components/Header';
+import {Header} from '../../components/Header';
+import {AuthContext} from '../../services/AuthService';
 
 function ChooseClass({ navigation, ...props }) {
+  const user = useContext(AuthContext);
     return (
         <>
-            <Header navigation={navigation} title={"Bem vindo, Lucas!"} />
+            <Header navigation={navigation} title={'Bem vindo, ' + user.displayName + '!'} />
             <View style={styles.contentContainer}>
                 <Text style={styles.contentText}>
                     Conteúdos disponíveis para seus estudos

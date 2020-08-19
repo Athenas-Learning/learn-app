@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
 
 const Skip = ({ onSkipPress, ...props }) => {
   return (

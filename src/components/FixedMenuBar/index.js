@@ -8,7 +8,7 @@ import userIcon from '../../assets/images/user.png';
 
 import styles from './styles';
 
-function FixedMenuBar() {
+const FixedMenuBar = () => {
     return (
         <View style={styles.fixedMenuBar}>
             <BorderlessButton style={styles.hexagonButton} >

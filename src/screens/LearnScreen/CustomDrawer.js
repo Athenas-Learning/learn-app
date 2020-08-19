@@ -3,6 +3,7 @@ import {
   View,
   SafeAreaView,
   Text,
+  Image,
   Divider,
   StyleSheet,
 } from 'react-native';
@@ -13,7 +14,18 @@ import {
   DrawerItem,
 } from '@react-navigation/drawer';
 
-const CustomDrawer = (props) => {
+import auth from '@react-native-firebase/auth';
+
+const CustomDrawer = (user) => (props) => {
+
+  const onLogoutPressAsync = async ()=>{
+    try {
+      await auth().signOut();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <View style={styles.root}>
       <DrawerContentScrollView>
@@ -22,14 +34,16 @@ const CustomDrawer = (props) => {
           forceInset={{top: 'always', horizontal: 'never'}}>
           <View style={[styles.containHeader]}>
             <View style={{justifyContent: 'center', alignItems: 'center'}}>
+              <Image source={{uri:user?.photoURL}} style={{width: 100, height: 100, borderRadius: 100, marginBottom: 10, marginTop: 10, borderColor: '#fff', borderWidth: 3}} />
               <Text style={styles.greetingsLabel}>Boa noite,</Text>
-              <Text style={styles.usernameLabel}>Igor Quirino</Text>
+              <Text style={styles.usernameLabel}>{user?.displayName}</Text>
               <Text
                 style={{
                   color: '#000000',
                   fontFamily: 'sans-serif-condensed',
+                  marginBottom: 10,
                 }}>
-                iquirino91@gmail.com
+                {user?.email}
               </Text>
             </View>
           </View>
@@ -63,7 +77,7 @@ const CustomDrawer = (props) => {
               inactiveBackgroundColor="#8D50F1"
               labelStyle={styles.itemLabel}
               style={styles.item}
-              onPress={() => props.navigation.navigate('Login')}
+              onPress={onLogoutPressAsync}
             />
           </View>
         </SafeAreaView>
