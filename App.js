@@ -2,6 +2,8 @@ import 'react-native-gesture-handler';
 
 import React, {useState, useEffect} from 'react';
 
+import auth from '@react-native-firebase/auth';
+
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
@@ -13,6 +15,7 @@ import {PasswordRecoveryScreen} from './src/screens/PasswordRecoveryScreen/Passw
 import {ValidationCodeScreen} from './src/screens/PasswordRecoveryScreen/ValidationCodeScreen';
 import {NewPasswordScreen} from './src/screens/PasswordRecoveryScreen/NewPasswordScreen';
 import {LearnScreen} from './src/screens/LearnScreen/LearnScreen';
+import {AuthContext} from './src/services/AuthService';
 
 const Stack = createStackNavigator();
 
@@ -20,75 +23,87 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
 
+  const onAuthStateChanged = (auth) => {
+    setUser(auth);
+  };
+
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-  });
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    setIsLoading(false);
+    return subscriber; // unsubscribe on unmount
+  }, []);
 
   if (isLoading) return <SplashScreen />;
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Learn"
-        screenOptions={{
-          headerStyle: {
-            backgroundColor: '#fff',
-          },
-          headerTintColor: '#000',
-        }}>
-        <Stack.Screen
-          name="Intro"
-          options={{
-            headerShown: false,
-          }}
-          component={IntroScreen}
-        />
-        <Stack.Screen
-          name="Login"
-          options={{
-            headerShown: false,
-          }}
-          component={LoginScreen}
-        />
-        <Stack.Screen
-          name="Signup"
-          options={{
-            headerShown: false,
-          }}
-          component={SignupScreen}
-        />
-        <Stack.Screen
-          name="PasswordRecovery"
-          options={{
-            headerShown: false,
-          }}
-          component={PasswordRecoveryScreen}
-        />
-        <Stack.Screen
-          name="NewPassword"
-          options={{
-            headerShown: false,
-          }}
-          component={NewPasswordScreen}
-        />
-        <Stack.Screen
-          name="ValidationCode"
-          options={{
-            headerShown: false,
-          }}
-          component={ValidationCodeScreen}
-        />
-        <Stack.Screen
-          name="Learn"
-          options={{
-            headerShown: false,
-          }}
-          component={LearnScreen}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <AuthContext.Provider value={user}>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: '#fff',
+            },
+            headerTintColor: '#000',
+          }}>
+          {!user ? (
+            <>
+              <Stack.Screen
+                name="Intro"
+                options={{
+                  headerShown: false,
+                }}
+                component={IntroScreen}
+              />
+              <Stack.Screen
+                name="Login"
+                options={{
+                  headerShown: false,
+                }}
+                component={LoginScreen}
+              />
+              <Stack.Screen
+                name="Signup"
+                options={{
+                  headerShown: false,
+                }}
+                component={SignupScreen}
+              />
+              <Stack.Screen
+                name="PasswordRecovery"
+                options={{
+                  headerShown: false,
+                }}
+                component={PasswordRecoveryScreen}
+              />
+              <Stack.Screen
+                name="NewPassword"
+                options={{
+                  headerShown: false,
+                }}
+                component={NewPasswordScreen}
+              />
+              <Stack.Screen
+                name="ValidationCode"
+                options={{
+                  headerShown: false,
+                }}
+                component={ValidationCodeScreen}
+              />
+            </>
+          ) : (
+            <>
+              <Stack.Screen
+                name="Learn"
+                options={{
+                  headerShown: false,
+                }}
+                component={LearnScreen}
+              />
+            </>
+          )}
+        </Stack.Navigator>
+      </NavigationContainer>
+    </AuthContext.Provider>
   );
 };
 

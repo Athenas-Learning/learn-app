@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "1016457017031",
+    "firebase_url": "https://athenas-study-app.firebaseio.com",
+    "project_id": "athenas-study-app",
+    "storage_bucket": "athenas-study-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1016457017031:android:05352e20290f646e7df0e2",
+        "android_client_info": {
+          "package_name": "com.athenaslearning.studyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1016457017031-nknj54r2dtkp9vmpprb86qamo7ajvpgc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.athenaslearning.studyapp",
+            "certificate_hash": "a92a8d56c2166e5f3d2e5b855e932639ac5d7268"
+          }
+        },
+        {
+          "client_id": "1016457017031-5eksolt5bm1ofgvo7epkj7jvq3mkvg0r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.athenaslearning.studyapp",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "1016457017031-j99qnbmj482nd3pj9jadchnts6e4g1d9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqBo2XOqoIuwvkaDIAbErMKmOj4WhDY7U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1016457017031-j99qnbmj482nd3pj9jadchnts6e4g1d9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
