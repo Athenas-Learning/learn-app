@@ -1,16 +1,19 @@
-import React, { useRef } from 'react';
-import { View, Button, StyleSheet } from 'react-native';
+import React, {useRef} from 'react';
+import {View, Button, StyleSheet} from 'react-native';
 
 import Swiper from 'react-native-swiper';
 
-import { Skip } from '../../components/Skip';
+import {Skip} from '../../components/Skip';
 
-import { Step01Screen } from './Step01Screen';
-import { Step02Screen } from './Step02Screen';
-import { Step03Screen } from './Step03Screen';
+import {Step01Screen} from './Step01Screen';
+import {Step02Screen} from './Step02Screen';
+import {Step03Screen} from './Step03Screen';
 
-const IntroScreen = ({ navigation, ...props }) => {
+const IntroScreen = ({navigation, ...props}) => {
   const swiperRef = useRef(null);
+  const handlePreviousStep = () => {
+    swiperRef.current.scrollBy(-1);
+  };
   const handleNextStep = () => {
     swiperRef.current.scrollBy(1);
   };
@@ -24,17 +27,19 @@ const IntroScreen = ({ navigation, ...props }) => {
         //index={step}
         loop={false}>
         <View style={styles.slide}>
-          <Step01Screen
-            onNextStepPress={handleNextStep}
-          />
+          <Step01Screen onNextStepPress={handleNextStep} />
         </View>
         <View style={styles.slide}>
           <Step02Screen
+            onPreviousStepPress={handlePreviousStep}
             onNextStepPress={handleNextStep}
           />
         </View>
         <View style={styles.slide}>
-          <Step03Screen onNextStepPress={() => navigation.navigate('Login')} />
+          <Step03Screen
+            onPreviousStepPress={handlePreviousStep}
+            onNextStepPress={() => navigation.navigate('Login')}
+          />
         </View>
       </Swiper>
     </View>
@@ -57,4 +62,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export { IntroScreen };
+export {IntroScreen};

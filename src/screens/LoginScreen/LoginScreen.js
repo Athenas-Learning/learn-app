@@ -1,11 +1,12 @@
 import React, {useEffect} from 'react';
 
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 import {GoogleSignin} from '@react-native-community/google-signin';
 
 GoogleSignin.configure({
   webClientId:
-    '1016457017031-j99qnbmj482nd3pj9jadchnts6e4g1d9.apps.googleusercontent.com'
+    '1016457017031-j99qnbmj482nd3pj9jadchnts6e4g1d9.apps.googleusercontent.com',
 });
 
 import {styles} from './style';
@@ -29,14 +30,20 @@ const LoginScreen = ({navigation, ...props}) => {
   const onGoogleButtonPressAsync = async () => {
     const data = await GoogleSignin.signIn();
     const googleCredential = auth.GoogleAuthProvider.credential(data.idToken);
+
+    if (data.user) {
+      await firestore().collection('users').doc(data.user.id).set(data.user);
+    }
+    
     return auth().signInWithCredential(googleCredential);
   };
 
   const onGoogleButtonPress = () => {
-    onGoogleButtonPressAsync().then(() => {
-    }).catch((error)=>{
-      alert('erro');
-    });
+    onGoogleButtonPressAsync()
+      .then(() => {})
+      .catch((error) => {
+        alert('erro');
+      });
   };
 
   return (
