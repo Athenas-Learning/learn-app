@@ -31,17 +31,10 @@ const LoginScreen = ({navigation, ...props}) => {
     const data = await GoogleSignin.signIn();
     const googleCredential = auth.GoogleAuthProvider.credential(data.idToken);
 
-    console.log(data.user);
     if (data.user) {
-      const userData = await firestore()
-        .collection('users')
-        .doc(data.user.id)
-        .get();
-      if (userData.exists) {
-      } else {
-        await firestore().collection('users').add(data.user);
-      }
+      await firestore().collection('users').doc(data.user.id).set(data.user);
     }
+    
     return auth().signInWithCredential(googleCredential);
   };
 
