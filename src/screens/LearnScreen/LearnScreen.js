@@ -4,6 +4,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { CustomDrawer } from './CustomDrawer';
 import ChooseClass from '../ChooseClass';
 import ChooseTheme from '../ChooseTheme';
+import ChooseContentStyle from '../ChooseContentStyle';
 
 import {AuthContext} from '../../services/AuthService';
 
@@ -19,8 +20,9 @@ const LearnScreen = () => {
 
   return (
     <Drawer.Navigator initialRouteName="Categories" drawerContent={DrawerMenu}>
-      <Drawer.Screen name="ChooseClass" component={ChooseClass} />
-      <Drawer.Screen name="ChooseTheme" component={ChooseTheme} />
+      <Drawer.Screen name="ChooseClass" component={ChooseClass} options={{title: 'Materias'}} />
+      <Drawer.Screen name="ChooseTheme" component={ChooseTheme} options={{title: 'Temas'}} />
+      <Drawer.Screen name="ChooseContentStyle" options={{title: 'Estilos'}} component={ChooseContentStyle} />
     </Drawer.Navigator>
   );
 };
