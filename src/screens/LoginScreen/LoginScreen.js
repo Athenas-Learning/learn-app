@@ -50,13 +50,9 @@ const LoginScreen = ({navigation, ...props}) => {
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {
         alert('That email address is already in use!');
-      }
-
-      if (error.code === 'auth/invalid-email') {
+      } else if (error.code === 'auth/invalid-email') {
         alert('That email address is invalid!');
-      }
-
-      console.error(error);
+      } else console.error(error);
     }
   };
 
