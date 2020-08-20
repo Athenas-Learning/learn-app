@@ -27,8 +27,8 @@ const App = () => {
 
   const onUserChangedAsync = async (userData) => {
     try {
+      setUser(userData);
       if (userData && userData.uid) {
-        setUser(userData);
         const data = {
           displayName: userData.displayName,
           email: userData.email,
@@ -63,7 +63,7 @@ const App = () => {
     return subscriber; // unsubscribe on unmount
   }, []);
 
-  if (isLoading) return <SplashScreen />;
+  if (isLoading || (isAuthenticated && !user)) return <SplashScreen />;
 
   return (
     <AuthContext.Provider value={user}>

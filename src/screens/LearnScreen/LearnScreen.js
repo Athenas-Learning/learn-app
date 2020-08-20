@@ -1,7 +1,5 @@
 import React, { useContext } from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-
-import { createDrawerNavigator } from '@react-navigation/drawer';
 import { CustomDrawer } from './CustomDrawer';
 
 import ChooseClass from '../ChooseClass';
