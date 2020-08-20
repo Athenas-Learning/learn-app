@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     fixedMenuBar: {
-        backgroundColor: '#f2c94c',
+        backgroundColor: '#8D50F1',
         width: '100%',
         height: 55,
         alignItems: 'center',
