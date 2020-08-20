@@ -53,7 +53,9 @@ const styles = StyleSheet.create({
   menuButton: {
     padding: 15,
   },
-  title: {},
+  title: {
+    maxWidth: 240
+  },
   titleLabel: {
     margin: 15,
     marginBottom: 12,
