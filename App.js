@@ -3,6 +3,7 @@ import 'react-native-gesture-handler';
 import React, {useState, useEffect} from 'react';
 
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -20,20 +21,49 @@ import {AuthContext} from './src/services/AuthService';
 const Stack = createStackNavigator();
 
 const App = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
 
-  const onAuthStateChanged = (auth) => {
-    setUser(auth);
+  const onUserChangedAsync = async (userData) => {
+    try {
+      setUser(userData);
+      if (userData && userData.uid) {
+        const data = {
+          displayName: userData.displayName,
+          email: userData.email,
+          emailVerified: userData.emailVerified,
+          isAnonymous: userData.isAnonymous,
+          metadata: userData.metadata,
+          phoneNumber: userData.phoneNumber,
+          photoURL: userData.photoURL,
+          providerId: userData.providerId,
+          uid: userData.uid,
+        };
+        await firestore().collection('users').doc(data.uid).set(data);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const onAuthStateChangedAsync = async (authData) => {
+    if (authData && authData.uid) setIsAuthenticated(true);
+    else setIsAuthenticated(false);
+    setUser(authData);
   };
 
   useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return auth().onUserChanged(onUserChangedAsync);
+  }, []);
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChangedAsync);
     setIsLoading(false);
     return subscriber; // unsubscribe on unmount
   }, []);
 
-  if (isLoading) return <SplashScreen />;
+  if (isLoading || (isAuthenticated && !user)) return <SplashScreen />;
 
   return (
     <AuthContext.Provider value={user}>
@@ -45,7 +75,7 @@ const App = () => {
             },
             headerTintColor: '#000',
           }}>
-          {!user ? (
+          {!isAuthenticated ? (
             <>
               <Stack.Screen
                 name="Intro"

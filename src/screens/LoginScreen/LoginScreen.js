@@ -1,7 +1,6 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import auth from '@react-native-firebase/auth';
-import firestore from '@react-native-firebase/firestore';
 import {GoogleSignin} from '@react-native-community/google-signin';
 
 GoogleSignin.configure({
@@ -27,23 +26,38 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 const Separator = () => <View style={styles.separator} />;
 
 const LoginScreen = ({navigation, ...props}) => {
-  const onGoogleButtonPressAsync = async () => {
-    const data = await GoogleSignin.signIn();
-    const googleCredential = auth.GoogleAuthProvider.credential(data.idToken);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-    if (data.user) {
-      await firestore().collection('users').doc(data.user.id).set(data.user);
+  const onGoogleButtonPressAsync = async () => {
+    try {
+      const data = await GoogleSignin.signIn();
+      const googleCredential = auth.GoogleAuthProvider.credential(data.idToken);
+
+      return await auth().signInWithCredential(googleCredential);
+    } catch (error) {
+      console.error(error);
     }
-    
-    return auth().signInWithCredential(googleCredential);
   };
 
-  const onGoogleButtonPress = () => {
-    onGoogleButtonPressAsync()
-      .then(() => {})
-      .catch((error) => {
-        alert('erro');
-      });
+  const onLoginButtonPressAsync = async () => {
+    try {
+      const authResult = await auth().signInWithEmailAndPassword(
+        email,
+        password,
+      );
+      console.log(authResult);
+    } catch (error) {
+      if (error.code === 'auth/email-already-in-use') {
+        alert('That email address is already in use!');
+      }
+
+      if (error.code === 'auth/invalid-email') {
+        alert('That email address is invalid!');
+      }
+
+      console.error(error);
+    }
   };
 
   return (
@@ -53,16 +67,20 @@ const LoginScreen = ({navigation, ...props}) => {
           <PublicHeader title="Acesse sua conta!" />
         </View>
         <View style={styles.loginScreenContainer}>
-          <Text style={styles.loginFormLabel}>Usuário</Text>
+          <Text style={styles.loginFormLabel}>Email</Text>
           <TextInput
             style={styles.loginFormTextInput}
-            placeholder="Digite aqui seu usuário"
+            placeholder="Digite aqui seu email"
+            value={email}
+            onChangeText={setEmail}
           />
           <Text style={styles.loginFormLabel}>Senha</Text>
           <TextInput
             style={styles.loginFormTextInput}
             secureTextEntry={true}
             placeholder="********"
+            value={password}
+            onChangeText={setPassword}
           />
           <TouchableOpacity
             onPress={() => navigation.navigate('PasswordRecovery')}>
@@ -72,7 +90,7 @@ const LoginScreen = ({navigation, ...props}) => {
             <Icon.Button
               name="lock"
               backgroundColor="#3b5998"
-              onPress={() => navigation.navigate('Learn')}>
+              onPress={onLoginButtonPressAsync}>
               <Text style={styles.loginLabel}>Acessar</Text>
             </Icon.Button>
           </View>
@@ -82,7 +100,7 @@ const LoginScreen = ({navigation, ...props}) => {
               name="google"
               backgroundColor="#EFEFEF"
               color="#EB5757"
-              onPress={onGoogleButtonPress}>
+              onPress={onGoogleButtonPressAsync}>
               <Text style={styles.googleLabel}>Login com Google</Text>
             </Icon.Button>
           </View>
