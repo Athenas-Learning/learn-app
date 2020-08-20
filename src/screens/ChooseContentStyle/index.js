@@ -24,7 +24,7 @@ function ChooseContentStyle({ navigation, ...props }) {
                     </Text>
                     <Image source={endToEndImg} style={styles.contentStyleImage} />
                 </BorderlessButton>
-                <BorderlessButton style={styles.stepByStepContainer}>
+                <BorderlessButton style={styles.stepByStepContainer} onPress={() => navigation.navigate('StepByStep')}>
                     <Text style={styles.contentStyleTitle}>Passo a passo</Text>
                     <Text style={styles.contentStyleDescription}>
                         Assim, você verá o conteúdo separado por sessões. {'\n'}

@@ -6,6 +6,7 @@ import ChooseClass from '../ChooseClass';
 import ChooseTheme from '../ChooseTheme';
 import ChooseContentStyle from '../ChooseContentStyle';
 import EndToEnd from '../ContentStyles/EndToEnd';
+import StepByStep from '../ContentStyles/StepByStep';
 
 import { AuthContext } from '../../services/AuthService';
 
@@ -25,6 +26,7 @@ const LearnScreen = () => {
       <Drawer.Screen name="ChooseTheme" component={ChooseTheme} options={{ title: 'Temas' }} />
       <Drawer.Screen name="ChooseContentStyle" options={{ title: 'Estilos' }} component={ChooseContentStyle} />
       <Drawer.Screen name="EndToEnd" component={EndToEnd} options={{ title: 'Ponta a ponta' }} />
+      <Drawer.Screen name="StepByStep" component={StepByStep} options={{ title: 'Passo a passo' }} />
     </Drawer.Navigator>
   );
 };
