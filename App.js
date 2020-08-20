@@ -13,7 +13,6 @@ import {IntroScreen} from './src/screens/IntroScreen/IntroScreen';
 import {LoginScreen} from './src/screens/LoginScreen/LoginScreen';
 import {SignupScreen} from './src/screens/SignupScreen/SignupScreen';
 import {PasswordRecoveryScreen} from './src/screens/PasswordRecoveryScreen/PasswordRecoveryScreen';
-import {PasswordResetScreen} from './src/screens/PasswordRecoveryScreen/PasswordResetScreen';
 import {LearnScreen} from './src/screens/LearnScreen/LearnScreen';
 import {AuthContext} from './src/services/AuthService';
 
@@ -103,13 +102,6 @@ const App = () => {
                   headerShown: false,
                 }}
                 component={PasswordRecoveryScreen}
-              />
-              <Stack.Screen
-                name="PasswordReset"
-                options={{
-                  headerShown: false,
-                }}
-                component={PasswordResetScreen}
               />
             </>
           ) : (
