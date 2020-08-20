@@ -8,6 +8,8 @@ import FixedMenuBar from '../../../components/FixedMenuBar';
 
 import solarSystemImg from '../../../assets/images/solarSystem.png';
 import solarSystemFormationImg from '../../../assets/images/solarSystemFormation.png';
+import videoPlayerImg from '../../../assets/images/video_player.png';
+import awardTrophyImg from '../../../assets/images/AwardTrophy.png';
 
 import styles from './styles';
 
@@ -33,10 +35,24 @@ function EndToEnd({ navigation, ...props }) {
                 <Image source={solarSystemFormationImg} style={[styles.contentSeparator]} />
 
                 <View style={[styles.complementaryVideosContainer, styles.contentSeparator]}>
-                    <RectButton style={[styles.complementaryVideosTitle, styles.contentSeparator]}>
+                    <RectButton disabled={true} touchSoundDisabled={true} style={[styles.complementaryVideosTitle, styles.contentSeparator]}>
                         <Text style={styles.complementaryVideosTitleText}>Vídeos complementares</Text>
                     </RectButton>
+                    <Image source={videoPlayerImg} style={styles.contentSeparator} />
+                    <Text style={[styles.complementaryVideosVideoChannel, styles.complementaryVideosTextSeparator]}>Canal do Schwarza</Text>
+                    <Text style={styles.complementaryVideosTextSeparator}>Conhecendo o Sistema Solar -{'\n'}Descomplicando a Astronomia</Text>
+                    <Text style={styles.complementaryVideosTextSeparator}>289.000 visualizações - Postado há 1 ano</Text>
                 </View>
+
+                <View style={styles.rewardContainer}>
+                    <Text style={styles.rewardCongratulations}>Parabéns, Lucas!</Text>
+                    <Image source={awardTrophyImg} />
+                    <Text style={styles.rewardContentFinishedTitle}>Você completou o assunto: Sistema Solar</Text>
+                </View>
+
+                <RectButton style={styles.goBackToChooseThemeButton} onPress={() => navigation.navigate('ChooseTheme')}>
+                    <Text style={styles.goBackToChooseThemeButtonText}>Voltar aos temas</Text>
+                </RectButton>
             </ScrollView>
             <FixedMenuBar />
         </SafeAreaView>

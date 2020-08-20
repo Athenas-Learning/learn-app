@@ -1,9 +1,5 @@
 import React, { useContext } from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-<<<<<<< HEAD
-
-=======
->>>>>>> f401b36c885c2f7c4da5e4fac1f1638ff2c679f7
 import { CustomDrawer } from './CustomDrawer';
 
 import ChooseClass from '../ChooseClass';
