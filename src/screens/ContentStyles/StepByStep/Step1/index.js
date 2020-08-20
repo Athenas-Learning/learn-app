@@ -2,16 +2,16 @@ import React from 'react';
 import { Text, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { Header } from '../../../components/Header';
-import { ScrollView } from 'react-native-gesture-handler';
+import { Header } from '../../../../components/Header';
+import { ScrollView, RectButton } from 'react-native-gesture-handler';
 
-import solarSystemImg from '../../../assets/images/solarSystem.png';
-import solarSystemFormationImg from '../../../assets/images/solarSystemFormation.png';
+import solarSystemImg from '../../../../assets/images/solarSystem.png';
+import solarSystemFormationImg from '../../../../assets/images/solarSystemFormation.png';
 
 import styles from './styles';
-import FixedMenuBar from '../../../components/FixedMenuBar';
+import FixedMenuBar from '../../../../components/FixedMenuBar';
 
-function StepByStep({ navigation, ...props }) {
+function Step1({ navigation, ...props }) {
     return (
         <SafeAreaView style={styles.container}>
             <Header title="Sistema Solar" navigation={navigation} />
@@ -31,10 +31,13 @@ function StepByStep({ navigation, ...props }) {
                 </Text>
                 {/* E aqui termina o texto sobre a Origem do Sitema solar */}
                 <Image source={solarSystemFormationImg} style={[styles.contentSeparator, styles.lastImageSeparator]} />
+                <RectButton style={styles.nextStepButton} onPress={() => navigation.navigate('Step2')}>
+                    <Text style={styles.nextStepButtonText}>Próximo</Text>
+                </RectButton>
             </ScrollView>
             <FixedMenuBar />
         </SafeAreaView>
     );
 };
 
-export default StepByStep;
+export default Step1;

@@ -22,7 +22,19 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     lastImageSeparator: {
-        marginBottom: 80
+        marginBottom: 15
+    },
+    nextStepButton: {
+        backgroundColor: '#5577B6',
+        height: 30,
+        width: '40%',
+        borderRadius: 5,
+        marginBottom: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    nextStepButtonText: {
+        color: '#efefef'
     }
 });
 
