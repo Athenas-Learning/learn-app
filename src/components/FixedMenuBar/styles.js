@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
         height: 55,
         alignItems: 'center',
         justifyContent: 'space-between',
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     hexagonButton: {
         marginLeft: 59

@@ -21,6 +21,9 @@ const styles = StyleSheet.create({
     textTextSeparator: {
         marginTop: 10,
     },
+    complementaryVideosContainer: {
+        width: '100%',
+    },
     complementaryVideosTitle: {
         backgroundColor: '#6fcf97',
         width: 215,
