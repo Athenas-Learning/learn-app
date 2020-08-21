@@ -18,7 +18,7 @@ import auth from '@react-native-firebase/auth';
 
 const CustomDrawer = (user) => (props) => {
 
-  const onLogoutPressAsync = async ()=>{
+  const onLogoutPressAsync = async () => {
     try {
       await auth().signOut();
     } catch (error) {
@@ -31,15 +31,15 @@ const CustomDrawer = (user) => (props) => {
       <DrawerContentScrollView>
         <SafeAreaView
           style={styles.container}
-          forceInset={{top: 'always', horizontal: 'never'}}>
+          forceInset={{ top: 'always', horizontal: 'never' }}>
           <View style={[styles.containHeader]}>
-            <View style={{justifyContent: 'center', alignItems: 'center'}}>
-              <Image source={{uri:user?.photoURL}} style={{width: 100, height: 100, borderRadius: 100, marginBottom: 10, marginTop: 10, borderColor: '#fff', borderWidth: 3}} />
+            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+              <Image source={{ uri: user?.photoURL }} style={{ width: 100, height: 100, borderRadius: 100, marginBottom: 10, marginTop: 10, borderColor: '#eee', borderWidth: 3 }} />
               <Text style={styles.greetingsLabel}>Boa noite,</Text>
               <Text style={styles.usernameLabel}>{user?.displayName}</Text>
               <Text
                 style={{
-                  color: '#000000',
+                  color: '#eee',
                   fontFamily: 'sans-serif-condensed',
                   marginBottom: 10,
                 }}>
@@ -50,20 +50,20 @@ const CustomDrawer = (user) => (props) => {
 
           <View style={styles.menu}>
             <DrawerItem
-              activeTintColor="#ffffff"
-              inactiveTintColor="#ffffff"
-              activeBackgroundColor="#8D50F1"
-              inactiveBackgroundColor="#8D50F1"
+              activeTintColor="#eee"
+              inactiveTintColor="#eee"
+              activeBackgroundColor="#EB5757"
+              inactiveBackgroundColor="#EB5757"
               labelStyle={styles.itemLabel}
               style={styles.item}
               label="Meu Perfil"
             />
 
             <DrawerItemList
-              activeTintColor="#ffffff"
-              inactiveTintColor="#ffffff"
-              activeBackgroundColor="#8D50F1"
-              inactiveBackgroundColor="#8D50F1"
+              activeTintColor="#eee"
+              inactiveTintColor="#eee"
+              activeBackgroundColor="#EB5757"
+              inactiveBackgroundColor="#EB5757"
               labelStyle={styles.itemLabel}
               itemStyle={styles.item}
               {...props}
@@ -71,10 +71,10 @@ const CustomDrawer = (user) => (props) => {
 
             <DrawerItem
               label="Sair"
-              activeTintColor="#ffffff"
-              inactiveTintColor="#ffffff"
-              activeBackgroundColor="#8D50F1"
-              inactiveBackgroundColor="#8D50F1"
+              activeTintColor="#eee"
+              inactiveTintColor="#eee"
+              activeBackgroundColor="#EB5757"
+              inactiveBackgroundColor="#EB5757"
               labelStyle={styles.itemLabel}
               style={styles.item}
               onPress={onLogoutPressAsync}
@@ -89,7 +89,7 @@ const CustomDrawer = (user) => (props) => {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: '#A176E8',
+    backgroundColor: '#EB5757',
   },
   container: {
     flex: 1,
@@ -103,12 +103,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   greetingsLabel: {
-    color: '#000000',
+    color: '#eee',
     fontSize: 20,
   },
   usernameLabel: {
     fontWeight: 'bold',
-    color: '#000000',
+    color: '#eee',
     fontSize: 20,
   },
   menu: {
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   },
   itemLabel: {
     marginLeft: 5,
-    color: '#ffffff',
+    color: '#eee',
     fontSize: 16,
     textAlign: 'center',
   },
@@ -132,4 +132,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export {CustomDrawer};
+export { CustomDrawer };
