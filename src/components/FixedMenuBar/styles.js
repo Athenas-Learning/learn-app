@@ -11,13 +11,15 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     hexagonButton: {
-        marginLeft: 59
+        marginLeft: 59,
+        padding: 10
     },
     rocketButton: {
         marginBottom: 29
     },
     userButton: {
-        marginRight: 59
+        marginRight: 59,
+        padding: 10
     }
 });
 

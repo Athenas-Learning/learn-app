@@ -15,6 +15,7 @@ import {SignupScreen} from './src/screens/SignupScreen/SignupScreen';
 import {PasswordRecoveryScreen} from './src/screens/PasswordRecoveryScreen/PasswordRecoveryScreen';
 import {LearnScreen} from './src/screens/LearnScreen/LearnScreen';
 import {AuthContext} from './src/services/AuthService';
+import { navigationRef, isReadyRef } from './src/services/NavigationService';
 
 const Stack = createStackNavigator();
 
@@ -65,7 +66,12 @@ const App = () => {
 
   return (
     <AuthContext.Provider value={user}>
-      <NavigationContainer>
+      <NavigationContainer
+      ref={navigationRef}
+      onReady={() => {
+        isReadyRef.current = true;
+      }}
+    >
         <Stack.Navigator
           screenOptions={{
             headerStyle: {

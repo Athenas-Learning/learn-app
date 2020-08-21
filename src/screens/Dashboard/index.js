@@ -20,18 +20,28 @@ function Dashboard({navigation, ...props}) {
         title={'Bem vindo, ' + user.displayName + '!'}
         navigation={navigation}
       />
-      <Text>Escolha uma aventura para aprender</Text>
+      <Text style={styles.themesDescription}>Escolha uma aventura para aprender</Text>
 
       <ScrollView>
         <View style={styles.themesContainer}>
           <View style={styles.themesItems}>
-            <Text>Ciências</Text>
+            <Text style={styles.themeItemTitle}>Ciências</Text>
             <ScrollView horizontal={true}>
-              <RectButton style={styles.themeButton}>
+              <RectButton
+                style={styles.themeButton}
+                onPress={() => navigation.navigate('ChooseContentStyle')}>
                 <Image source={blackHoleImg} style={styles.imageThemeButton} />
                 <Text style={styles.textThemeButton}>Buraco Negro</Text>
               </RectButton>
-              <RectButton style={styles.themeButton}>
+              <RectButton
+                style={styles.themeButton}
+                onPress={() => navigation.navigate('ChooseContentStyle')}>
+                <Image source={blackHoleImg} style={styles.imageThemeButton} />
+                <Text style={styles.textThemeButton}>Buraco Negro</Text>
+              </RectButton>
+              <RectButton
+                style={styles.themeButton}
+                onPress={() => navigation.navigate('ChooseContentStyle')}>
                 <Image source={blackHoleImg} style={styles.imageThemeButton} />
                 <Text style={styles.textThemeButton}>Buraco Negro</Text>
               </RectButton>
@@ -44,13 +54,11 @@ function Dashboard({navigation, ...props}) {
             </ScrollView>
           </View>
           <View style={styles.themesItems}>
-            <Text>Geografia</Text>
+            <Text style={styles.themeItemTitle}>Geografia</Text>
             <ScrollView horizontal={true}>
-              <RectButton style={styles.themeButton}>
-                <Image source={blackHoleImg} style={styles.imageThemeButton} />
-                <Text style={styles.textThemeButton}>Buraco Negro</Text>
-              </RectButton>
-              <RectButton style={styles.themeButton}>
+              <RectButton
+                style={styles.themeButton}
+                onPress={() => navigation.navigate('ChooseContentStyle')}>
                 <Image source={blackHoleImg} style={styles.imageThemeButton} />
                 <Text style={styles.textThemeButton}>Buraco Negro</Text>
               </RectButton>
@@ -63,16 +71,31 @@ function Dashboard({navigation, ...props}) {
             </ScrollView>
           </View>
           <View style={styles.themesItems}>
-            <Text>História</Text>
+            <Text style={styles.themeItemTitle}>Física</Text>
             <ScrollView horizontal={true}>
-              <RectButton style={styles.themeButton}>
+              <RectButton
+                style={styles.themeButton}
+                onPress={() => navigation.navigate('ChooseContentStyle')}>
                 <Image source={blackHoleImg} style={styles.imageThemeButton} />
                 <Text style={styles.textThemeButton}>Buraco Negro</Text>
               </RectButton>
-              <RectButton style={styles.themeButton}>
+              <RectButton
+                style={styles.themeButton}
+                onPress={() => navigation.navigate('ChooseContentStyle')}>
                 <Image source={blackHoleImg} style={styles.imageThemeButton} />
                 <Text style={styles.textThemeButton}>Buraco Negro</Text>
               </RectButton>
+              <RectButton
+                style={styles.themeButton}
+                onPress={() => navigation.navigate('ChooseContentStyle')}>
+                <Image source={blackHoleImg} style={styles.imageThemeButton} />
+                <Text style={styles.textThemeButton}>Buraco Negro</Text>
+              </RectButton>
+            </ScrollView>
+          </View>
+          <View style={styles.themesItems}>
+            <Text style={styles.themeItemTitle}>História</Text>
+            <ScrollView horizontal={true}>
               <RectButton
                 style={styles.themeButton}
                 onPress={() => navigation.navigate('ChooseContentStyle')}>

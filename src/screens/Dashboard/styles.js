@@ -8,18 +8,23 @@ const styles = StyleSheet.create({
   },
   themesContainer: {},
   themesItems: {
-    marginVertical: 7,
+    margin: 6,
   },
   themesDescription: {
     fontSize: 16,
     color: '#525252',
-    padding: 15,
+    padding: 3,
+  },
+  themeItemTitle: {
+    fontSize: 24,
+    marginHorizontal: 3,
+    marginVertical: 7,
   },
   themeButton: {
     backgroundColor: '#5577B6',
     alignItems: 'center',
     borderRadius: 8,
-    marginHorizontal: 7,
+    marginHorizontal: 3,
   },
   textThemeButton: {
     padding: 7,
