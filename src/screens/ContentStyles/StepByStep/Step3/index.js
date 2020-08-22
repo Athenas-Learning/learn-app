@@ -8,58 +8,35 @@ import {
     SafeAreaView,
     Image
 } from 'react-native';
-import { RectButton } from 'react-native-gesture-handler';
+import { BorderlessButton } from 'react-native-gesture-handler';
 
 import { Header } from '../../../../components/Header';
 import FixedMenuBar from '../../../../components/FixedMenuBar';
 
-import hexagonImg from '../../../../assets/images/hexagon_blue.png';
+import soundIcon from '../../../../assets/images/sound.png';
+import endToEndExample from '../../../../assets/images/endToEnd.png';
 
 // import styles from './styles';
 
 function Step3({ navigation, ...props }) {
     return (
         <SafeAreaView style={styles.container}>
-            <Header title="Meu Perfil" navigation={navigation} />
+            <Header title="Configurações" navigation={navigation} />
             <ScrollView contentContainerStyle={styles.scrollContainer}>
-                <Text style={styles.titleText}>Atualizar informações</Text>
+                <View style={styles.soundConfigContainer}>
+                    <Text style={styles.configTitleLabel}>Som das animações</Text>
+                    <BorderlessButton style={styles.soundConfigIcon}>
+                        <Image source={soundIcon} />
+                    </BorderlessButton>
+                </View>
 
-                <Image source={hexagonImg} style={styles.logoImg} />
-                <View style={styles.loginScreenContainer}>
-                    <Text style={styles.loginFormLabel}>Nome</Text>
-                    <TextInput
-                        style={styles.loginFormTextInput}
-                        value='firstName'
-                    />
-                    <Text style={styles.loginFormLabel}>Sobrenome</Text>
-                    <TextInput
-                        style={styles.loginFormTextInput}
-                        value='lastName'
-                    />
-                    <Text style={styles.loginFormLabel}>E-mail</Text>
-                    <TextInput
-                        style={styles.loginFormTextInput}
-                        value='email'
-                    />
-                    <Text style={styles.loginFormLabel}>Senha Atual</Text>
-                    <TextInput
-                        style={styles.loginFormTextInput}
-                        secureTextEntry={true}
-                        value='previousPassword'
-                    />
-                    <Text style={styles.loginFormLabel}>Nova senha</Text>
-                    <TextInput
-                        style={styles.loginFormTextInput}
-                        secureTextEntry={true}
-                        value='newPassword'
-                    />
-                    <Text style={styles.loginFormLabel}>Confirmar nova senha</Text>
-                    <TextInput
-                        style={styles.loginFormTextInput}
-                        secureTextEntry={true}
-                        value='newPassword'
-                    />
-                    <RectButton style={styles.confirmProfileChangesButton}><Text style={styles.buttonText}>Confirmar alterações</Text></RectButton>
+                <Text style={styles.configTitleLabel}>Visualização do conteúdo</Text>
+                <View style={styles.contentStyleConfigContainer}>
+                    <BorderlessButton style={styles.endToEndButtonSelection}>
+                        <Text style={styles.contentStyleTitle}>Ponta a Ponta</Text>
+                        <Text style={styles.contentStyleDescription}>Você navega pelos textos, imagens e vídeos em uma só tela.</Text>
+                        <Image source={endToEndExample} />
+                    </BorderlessButton>
                 </View>
             </ScrollView>
             <FixedMenuBar />
@@ -76,44 +53,17 @@ const styles = StyleSheet.create({
     },
     scrollContainer: {
         justifyContent: 'center',
-        alignItems: 'center'
+        marginLeft: 15,
+        marginHorizontal: 10,
     },
-    titleText: {
+    soundConfigContainer: {
+        flexDirection: 'row',
+    },
+    configTitleLabel: {
         color: '#414141',
-        fontSize: 24,
-        marginVertical: 15
+        fontSize: 16
     },
-    loginFormPadding: {},
-    loginScreenContainer: {
-        width: '90%',
-        marginTop: 15,
-    },
-    loginFormSignup: {
-    },
-    loginFormLabel: {
-        fontSize: 18,
-    },
-    loginFormTextInput: {
-        height: 40,
-        fontSize: 14,
-        borderBottomWidth: 1,
-        borderBottomColor: '#ccc',
-        marginTop: 5,
-        marginBottom: 5,
-    },
-    confirmProfileChangesButton: {
-        width: '80%',
-        height: 40,
-        borderRadius: 5,
-        backgroundColor: '#5577b6',
-        alignSelf: 'center',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 22,
-        marginBottom: 60
-    },
-    buttonText: {
-        fontWeight: 'bold',
-        color: '#eee',
+    soundConfigIcon: {
+        marginLeft: '49%'
     }
 })
