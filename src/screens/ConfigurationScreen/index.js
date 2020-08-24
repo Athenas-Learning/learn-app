@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import {
     Text,
     View,
-    ScrollView,
-    StyleSheet,
     SafeAreaView,
     Image,
 } from 'react-native';
@@ -43,7 +41,7 @@ function ConfigurationScreen({ navigation, ...props }) {
     return (
         <SafeAreaView style={styles.container}>
             <Header title="Configurações" navigation={navigation} />
-            <ScrollView contentContainerStyle={styles.scrollContainer}>
+            <View style={styles.configContainer}>
                 <View style={styles.soundConfigContainer}>
                     <Text style={[styles.textTitleSize, styles.textColor]}>Som das animações</Text>
                     <BorderlessButton style={styles.soundConfigIcon} onPress={handleSoundState}>
@@ -53,8 +51,6 @@ function ConfigurationScreen({ navigation, ...props }) {
                         }
                     </BorderlessButton>
                 </View>
-
-                {contentVisualizationMode == ''}
 
                 <Text style={[styles.textTitleSize, styles.textColor]}>Visualização do conteúdo</Text>
                 <View style={styles.contentStyleConfigContainer}>
@@ -96,7 +92,7 @@ function ConfigurationScreen({ navigation, ...props }) {
                         }
                     </BorderlessButton>
                 </View>
-            </ScrollView>
+            </View>
             <FixedMenuBar />
         </SafeAreaView>
     );

@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'space-between',
     },
-    scrollContainer: {
+    configContainer: {
         justifyContent: 'center',
         marginLeft: 15,
         marginHorizontal: 10,
