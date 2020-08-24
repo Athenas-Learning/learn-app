@@ -10,10 +10,10 @@ import {
 } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 
-import { Header } from '../../../../components/Header';
-import FixedMenuBar from '../../../../components/FixedMenuBar';
+import { Header } from '../../components/Header';
+import FixedMenuBar from '../../components/FixedMenuBar';
 
-import hexagonImg from '../../../../assets/images/hexagon_blue.png';
+import hexagonImg from '../../assets/images/hexagon_blue.png';
 
 import styles from './styles';
 

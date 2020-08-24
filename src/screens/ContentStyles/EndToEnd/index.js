@@ -50,7 +50,7 @@ function EndToEnd({ navigation, ...props }) {
                     <Text style={styles.rewardContentFinishedTitle}>Você completou o assunto: Sistema Solar</Text>
                 </View>
 
-                <RectButton style={styles.goBackToChooseThemeButton} onPress={() => navigation.navigate('ChooseTheme')}>
+                <RectButton style={styles.goBackToChooseThemeButton} onPress={() => navigation.navigate('Dashboard')}>
                     <Text style={styles.goBackToChooseThemeButtonText}>Voltar aos temas</Text>
                 </RectButton>
             </ScrollView>

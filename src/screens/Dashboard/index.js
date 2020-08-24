@@ -1,23 +1,23 @@
-import React, {useContext} from 'react';
-import {View, Text, Image, ScrollView} from 'react-native';
-import {RectButton, BorderlessButton} from 'react-native-gesture-handler';
+import React, { useContext } from 'react';
+import { View, Text, Image, ScrollView } from 'react-native';
+import { RectButton, BorderlessButton } from 'react-native-gesture-handler';
 
-import {Header} from '../../components/Header';
+import { Header } from '../../components/Header';
 import FixedMenuBar from '../../components/FixedMenuBar';
 
 import blackHoleImg from '../../assets/images/black-hole.png';
 
-import {AuthContext} from '../../services/AuthService';
+import { AuthContext } from '../../services/AuthService';
 
 import styles from './styles';
 
-function Dashboard({navigation, ...props}) {
+function Dashboard({ navigation, ...props }) {
   const user = useContext(AuthContext);
 
   return (
     <View style={styles.container}>
       <Header
-        title={'Bem vindo, ' + user.displayName + '!'}
+        title={'Bem vindo, ' + user.displayName.split(' ')[0] + '!'}
         navigation={navigation}
       />
       <Text style={styles.themesDescription}>Escolha uma aventura para aprender</Text>
