@@ -2,8 +2,8 @@ import React from 'react';
 import { View, SafeAreaView, Text, StyleSheet } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 
-import { Header } from '../../../../components/Header';
-import FixedMenuBar from '../../../../components/FixedMenuBar';
+import { Header } from '../../components/Header';
+import FixedMenuBar from '../../components/FixedMenuBar';
 
 import styles from './styles';
 
