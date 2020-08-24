@@ -9,15 +9,15 @@ import {
 import { RectButton } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Feather';
 
-import { Header } from '../../components/Header';
-import FixedMenuBar from '../../components/FixedMenuBar';
+import { Header } from '../../../../components/Header';
+import FixedMenuBar from '../../../../components/FixedMenuBar';
 
-import smallTeacherImg from '../../assets/images/smallArcheologyst.png';
-import bigTeacherImg from '../../assets/images/bigArcheologyst.png';
-import firstVolcanoImg from '../../assets/images/volcanoImg.png';
-import secondVolcanoImg from '../../assets/images/volcano2.png';
-import thirdVolcanoImg from '../../assets/images/thirdVolcano.png';
-import eruptingVolcanoImg from '../../assets/images/eruptingVolcano.png';
+import smallTeacherImg from '../../../../assets/images/smallArcheologyst.png';
+import bigTeacherImg from '../../../../assets/images/bigArcheologyst.png';
+import firstVolcanoImg from '../../../../assets/images/volcanoImg.png';
+import secondVolcanoImg from '../../../../assets/images/volcano2.png';
+import thirdVolcanoImg from '../../../../assets/images/thirdVolcano.png';
+import eruptingVolcanoImg from '../../../../assets/images/eruptingVolcano.png';
 
 import styles from './styles';
 
