@@ -5,6 +5,9 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'space-between',
     },
+    containerMargin: {
+        marginHorizontal: 15,
+    },
     scrollContainer: {
         marginHorizontal: 15,
         alignItems: 'center',
