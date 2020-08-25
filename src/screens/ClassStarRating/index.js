@@ -1,11 +1,13 @@
 import React from 'react';
 import { View, SafeAreaView, Text, StyleSheet } from 'react-native';
+
 import { RectButton } from 'react-native-gesture-handler';
 
 import { Header } from '../../components/Header';
 import FixedMenuBar from '../../components/FixedMenuBar';
 
 import styles from './styles';
+import GeneralStarExample from './StarRating';
 
 function ClassStarRating({ navigation, ...props }) {
     return (
@@ -18,9 +20,7 @@ function ClassStarRating({ navigation, ...props }) {
                 Você finalizou todo o conteúdo sobre sistema solar e está pronto para novas aventuras! {'\n'}{'\n'}{'\n'}
                 Mas antes, você poderia deixar uma nota sobre o que achou? É bem rapidinho.
             </Text>
-            <View style={styles.ratingContainer}>
-
-            </View>
+            <GeneralStarExample />
             <RectButton style={styles.finishClassButton}>
                 <Text style={styles.buttonText}>Finalizar</Text>
             </RectButton>
@@ -30,4 +30,3 @@ function ClassStarRating({ navigation, ...props }) {
 };
 
 export default ClassStarRating;
-
