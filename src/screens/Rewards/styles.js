@@ -6,57 +6,53 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     scrollContainer: {
-        marginLeft: 15,
-        marginHorizontal: 10,
-        backgroundColor: '#e30'
+        marginHorizontal: 15,
+        alignItems: 'center',
     },
-    rewardWarning: {
-        marginTop: 15,
-        textAlign: 'center'
-    },
-    textTitleSize: {
+    titleTextSize: {
         fontSize: 16,
     },
-    textColor: {
-        color: '#414141'
+    textColorAndWeight: {
+        color: '#414141',
+        fontWeight: "500",
     },
-    rewardsDataTitle: {
-        justifyContent: 'space-between',
+    adjustingContentToRow: {
         flexDirection: 'row',
-        marginTop: 10,
-        marginBottom: 17,
-        marginHorizontal: 15,
+        alignItems: 'center',
+        alignSelf: 'flex-start',
     },
-    rewardButton: {
+    rewardTitleContainer: {
         backgroundColor: '#04d361',
         height: 20,
         width: '30%',
         borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',
+        marginLeft: '35%',
+        marginTop: 10
     },
-    rewardButtonText: {
+    rewardTitleText: {
         color: '#eee'
     },
-    rewardDataContainer: {
-        flexDirection: 'row',
-    },
-    unlockedTrophyBackground: {
+    trophyContainer: {
         backgroundColor: '#e5e5e5',
         width: 60,
         height: 60,
         justifyContent: 'center',
-        alignItems: 'center',
-        marginRight: 15,
+        alignItems: 'center'
     },
-    rewardDescriptionContainer: {
-        justifyContent: 'space-between',
-        height: '20%'
-    },
-    unlockedRewardRewardText: {
+    rewardTextDescription: {
+        fontWeight: "500",
         color: '#747474',
+        marginTop: 20
+    },
+    rewardImageTextVerticalSeparator: {
         marginTop: 15
+    },
+    rewardImageTextSeparator: {
+        marginLeft: 15,
     }
-})
+
+});
 
 export default styles;

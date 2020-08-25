@@ -5,7 +5,7 @@ import { BorderlessButton } from 'react-native-gesture-handler';
 import thirtyProgressStatus from '../../../../assets/images/30progressStatus.png';
 import thirtyProgressBar from '../../../../assets/images/thirtyPercentProgressBar.png';
 
-function Step3({ navigation, ...props }) {
+function ProgressInsideClass({ navigation, ...props }) {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.progressContentWrapper}>
@@ -30,7 +30,7 @@ function Step3({ navigation, ...props }) {
     );
 };
 
-export default Step3;
+export default ProgressInsideClass;
 
 const styles = StyleSheet.create({
     container: {

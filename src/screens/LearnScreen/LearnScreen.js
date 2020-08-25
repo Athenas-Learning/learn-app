@@ -11,6 +11,7 @@ import Step1 from '../ContentStyles/StepByStep/Step1';
 import Step2 from '../ContentStyles/StepByStep/Step2';
 import Step3 from '../ContentStyles/StepByStep/Step3';
 import EditProfile from '../EditProfile/index';
+import Rewards from '../Rewards/index';
 
 import { AuthContext } from '../../services/AuthService';
 
@@ -35,6 +36,7 @@ const LearnScreen = () => {
       <Drawer.Screen name="Step2" component={Step2} options={{ title: 'Passo a passo' }} />
       <Drawer.Screen name="Step3" component={Step3} options={{ title: 'Passo a passo' }} />
       <Drawer.Screen name="EditProfile" component={EditProfile} options={{ title: 'Passo a passo' }} />
+      <Drawer.Screen name="Rewards" component={Rewards} options={{ title: 'Passo a passo' }} />
     </Drawer.Navigator>
   );
 };

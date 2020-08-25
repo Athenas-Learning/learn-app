@@ -1,74 +1,287 @@
 import React from 'react';
-import {
-    Text,
-    View,
-    ScrollView,
-    StyleSheet,
-    SafeAreaView,
-} from 'react-native';
-
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import { View, Text, Image } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { ScrollView, RectButton } from 'react-native-gesture-handler';
 
 import { Header } from '../../components/Header';
 import FixedMenuBar from '../../components/FixedMenuBar';
 
+import Icon from 'react-native-vector-icons/FontAwesome5';
+
 import styles from './styles';
 
-function Rewards({ navigation, ...props }) {
+function EndToEnd({ navigation, ...props }) {
     return (
         <SafeAreaView style={styles.container}>
-            <Header title="Conquistas" navigation={navigation} />
-            <Text style={[styles.rewardWarning, styles.textTitleSize, styles.textColor]}>Você desbloqueou 1 conquista!</Text>
+            <Header title="Sistema Solar" navigation={navigation} />
             <ScrollView contentContainerStyle={styles.scrollContainer}>
-                <View style={styles.rewardsDataTitle}>
-                    <Text style={[styles.textTitleSize, styles.textColor]}>Seus pontos: 50</Text>
-                    <View style={styles.rewardButton}>
-                        <Text style={styles.rewardButtonText}>Recompensas</Text>
+                <Text style={[styles.titleTextSize, styles.textColorAndWeight]}>Parabens! Você desbloqueou uma conquista.</Text>
+                <View style={styles.adjustingContentToRow}>
+                    <Text style={[styles.titleTextSize, styles.textColorAndWeight]}>
+                        Seus pontos: 50
+                    </Text>
+                    <View style={[styles.rewardTitleContainer]}>
+                        <Text style={styles.rewardTitleText}>Recompensas</Text>
                     </View>
                 </View>
-                <View style={styles.rewardDataContainer}>
-                    <View style={styles.unlockedTrophyBackground}>
+                <View style={[styles.adjustingContentToRow, styles.rewardImageTextVerticalSeparator]}>
+                    <View style={styles.trophyContainer}>
                         <Icon name="trophy" size={40} color="#f2c94c" />
                     </View>
-                    <View style={styles.rewardDescriptionContainer}>
-                        <Text style={[styles.textTitleSize, styles.textColor]}>Completar o cadastro</Text>
-                        <Text style={styles.unlockedRewardRewardText}>50 pontos</Text>
+                    <View style={styles.rewardImageTextSeparator}>
+                        <Text style={[styles.titleTextSize, styles.textColorAndWeight]}>
+                            Completar o cadastro
+                        </Text>
+                        <Text style={styles.rewardTextDescription}>
+                            50 pontos
+                        </Text>
                     </View>
                 </View>
-                <View style={styles.rewardDataContainer}>
-                    <View style={styles.unlockedTrophyBackground}>
+                <View style={[styles.adjustingContentToRow, styles.rewardImageTextVerticalSeparator]}>
+                    <View style={styles.trophyContainer}>
                         <Icon name="trophy" size={40} color="#f2c94c" />
                     </View>
-                    <View style={styles.rewardDescriptionContainer}>
-                        <Text style={[styles.textTitleSize, styles.textColor]}>Completar o cadastro</Text>
-                        <Text style={styles.unlockedRewardRewardText}>50 pontos</Text>
+                    <View style={styles.rewardImageTextSeparator}>
+                        <Text style={[styles.titleTextSize, styles.textColorAndWeight]}>
+                            Completar o cadastro
+                        </Text>
+                        <Text style={styles.rewardTextDescription}>
+                            50 pontos
+                        </Text>
                     </View>
                 </View>
-                <View style={styles.rewardDataContainer}>
-                    <View style={styles.unlockedTrophyBackground}>
+                <View style={[styles.adjustingContentToRow, styles.rewardImageTextVerticalSeparator]}>
+                    <View style={styles.trophyContainer}>
                         <Icon name="trophy" size={40} color="#f2c94c" />
                     </View>
-                    <View style={styles.rewardDescriptionContainer}>
-                        <Text style={[styles.textTitleSize, styles.textColor]}>Completar o cadastro</Text>
-                        <Text style={styles.unlockedRewardRewardText}>50 pontos</Text>
+                    <View style={styles.rewardImageTextSeparator}>
+                        <Text style={[styles.titleTextSize, styles.textColorAndWeight]}>
+                            Completar o cadastro
+                        </Text>
+                        <Text style={styles.rewardTextDescription}>
+                            50 pontos
+                        </Text>
                     </View>
                 </View>
-                <View style={styles.rewardDataContainer}>
-                    <View style={styles.unlockedTrophyBackground}>
+                <View style={[styles.adjustingContentToRow, styles.rewardImageTextVerticalSeparator]}>
+                    <View style={styles.trophyContainer}>
                         <Icon name="trophy" size={40} color="#f2c94c" />
                     </View>
-                    <View style={styles.rewardDescriptionContainer}>
-                        <Text style={[styles.textTitleSize, styles.textColor]}>Completar o cadastro</Text>
-                        <Text style={styles.unlockedRewardRewardText}>50 pontos</Text>
+                    <View style={styles.rewardImageTextSeparator}>
+                        <Text style={[styles.titleTextSize, styles.textColorAndWeight]}>
+                            Completar o cadastro
+                        </Text>
+                        <Text style={styles.rewardTextDescription}>
+                            50 pontos
+                        </Text>
                     </View>
                 </View>
-                <View style={styles.rewardDataContainer}>
-                    <View style={styles.unlockedTrophyBackground}>
+                <View style={[styles.adjustingContentToRow, styles.rewardImageTextVerticalSeparator]}>
+                    <View style={styles.trophyContainer}>
                         <Icon name="trophy" size={40} color="#f2c94c" />
                     </View>
-                    <View style={styles.rewardDescriptionContainer}>
-                        <Text style={[styles.textTitleSize, styles.textColor]}>Completar o cadastro</Text>
-                        <Text style={styles.unlockedRewardRewardText}>50 pontos</Text>
+                    <View style={styles.rewardImageTextSeparator}>
+                        <Text style={[styles.titleTextSize, styles.textColorAndWeight]}>
+                            Completar o cadastro
+                        </Text>
+                        <Text style={styles.rewardTextDescription}>
+                            50 pontos
+                        </Text>
+                    </View>
+                </View>
+                <View style={[styles.adjustingContentToRow, styles.rewardImageTextVerticalSeparator]}>
+                    <View style={styles.trophyContainer}>
+                        <Icon name="trophy" size={40} color="#f2c94c" />
+                    </View>
+                    <View style={styles.rewardImageTextSeparator}>
+                        <Text style={[styles.titleTextSize, styles.textColorAndWeight]}>
+                            Completar o cadastro
+                        </Text>
+                        <Text style={styles.rewardTextDescription}>
+                            50 pontos
+                        </Text>
+                    </View>
+                </View>
+                <View style={[styles.adjustingContentToRow, styles.rewardImageTextVerticalSeparator]}>
+                    <View style={styles.trophyContainer}>
+                        <Icon name="trophy" size={40} color="#f2c94c" />
+                    </View>
+                    <View style={styles.rewardImageTextSeparator}>
+                        <Text style={[styles.titleTextSize, styles.textColorAndWeight]}>
+                            Completar o cadastro
+                        </Text>
+                        <Text style={styles.rewardTextDescription}>
+                            50 pontos
+                        </Text>
+                    </View>
+                </View>
+                <View style={[styles.adjustingContentToRow, styles.rewardImageTextVerticalSeparator]}>
+                    <View style={styles.trophyContainer}>
+                        <Icon name="trophy" size={40} color="#f2c94c" />
+                    </View>
+                    <View style={styles.rewardImageTextSeparator}>
+                        <Text style={[styles.titleTextSize, styles.textColorAndWeight]}>
+                            Completar o cadastro
+                        </Text>
+                        <Text style={styles.rewardTextDescription}>
+                            50 pontos
+                        </Text>
+                    </View>
+                </View>
+                <View style={[styles.adjustingContentToRow, styles.rewardImageTextVerticalSeparator]}>
+                    <View style={styles.trophyContainer}>
+                        <Icon name="trophy" size={40} color="#f2c94c" />
+                    </View>
+                    <View style={styles.rewardImageTextSeparator}>
+                        <Text style={[styles.titleTextSize, styles.textColorAndWeight]}>
+                            Completar o cadastro
+                        </Text>
+                        <Text style={styles.rewardTextDescription}>
+                            50 pontos
+                        </Text>
+                    </View>
+                </View>
+                <View style={[styles.adjustingContentToRow, styles.rewardImageTextVerticalSeparator]}>
+                    <View style={styles.trophyContainer}>
+                        <Icon name="trophy" size={40} color="#f2c94c" />
+                    </View>
+                    <View style={styles.rewardImageTextSeparator}>
+                        <Text style={[styles.titleTextSize, styles.textColorAndWeight]}>
+                            Completar o cadastro
+                        </Text>
+                        <Text style={styles.rewardTextDescription}>
+                            50 pontos
+                        </Text>
+                    </View>
+                </View>
+                <View style={[styles.adjustingContentToRow, styles.rewardImageTextVerticalSeparator]}>
+                    <View style={styles.trophyContainer}>
+                        <Icon name="trophy" size={40} color="#f2c94c" />
+                    </View>
+                    <View style={styles.rewardImageTextSeparator}>
+                        <Text style={[styles.titleTextSize, styles.textColorAndWeight]}>
+                            Completar o cadastro
+                        </Text>
+                        <Text style={styles.rewardTextDescription}>
+                            50 pontos
+                        </Text>
+                    </View>
+                </View>
+                <View style={[styles.adjustingContentToRow, styles.rewardImageTextVerticalSeparator]}>
+                    <View style={styles.trophyContainer}>
+                        <Icon name="trophy" size={40} color="#f2c94c" />
+                    </View>
+                    <View style={styles.rewardImageTextSeparator}>
+                        <Text style={[styles.titleTextSize, styles.textColorAndWeight]}>
+                            Completar o cadastro
+                        </Text>
+                        <Text style={styles.rewardTextDescription}>
+                            50 pontos
+                        </Text>
+                    </View>
+                </View>
+                <View style={[styles.adjustingContentToRow, styles.rewardImageTextVerticalSeparator]}>
+                    <View style={styles.trophyContainer}>
+                        <Icon name="trophy" size={40} color="#f2c94c" />
+                    </View>
+                    <View style={styles.rewardImageTextSeparator}>
+                        <Text style={[styles.titleTextSize, styles.textColorAndWeight]}>
+                            Completar o cadastro
+                        </Text>
+                        <Text style={styles.rewardTextDescription}>
+                            50 pontos
+                        </Text>
+                    </View>
+                </View>
+                <View style={[styles.adjustingContentToRow, styles.rewardImageTextVerticalSeparator]}>
+                    <View style={styles.trophyContainer}>
+                        <Icon name="trophy" size={40} color="#f2c94c" />
+                    </View>
+                    <View style={styles.rewardImageTextSeparator}>
+                        <Text style={[styles.titleTextSize, styles.textColorAndWeight]}>
+                            Completar o cadastro
+                        </Text>
+                        <Text style={styles.rewardTextDescription}>
+                            50 pontos
+                        </Text>
+                    </View>
+                </View>
+                <View style={[styles.adjustingContentToRow, styles.rewardImageTextVerticalSeparator]}>
+                    <View style={styles.trophyContainer}>
+                        <Icon name="trophy" size={40} color="#f2c94c" />
+                    </View>
+                    <View style={styles.rewardImageTextSeparator}>
+                        <Text style={[styles.titleTextSize, styles.textColorAndWeight]}>
+                            Completar o cadastro
+                        </Text>
+                        <Text style={styles.rewardTextDescription}>
+                            50 pontos
+                        </Text>
+                    </View>
+                </View>
+                <View style={[styles.adjustingContentToRow, styles.rewardImageTextVerticalSeparator]}>
+                    <View style={styles.trophyContainer}>
+                        <Icon name="trophy" size={40} color="#f2c94c" />
+                    </View>
+                    <View style={styles.rewardImageTextSeparator}>
+                        <Text style={[styles.titleTextSize, styles.textColorAndWeight]}>
+                            Completar o cadastro
+                        </Text>
+                        <Text style={styles.rewardTextDescription}>
+                            50 pontos
+                        </Text>
+                    </View>
+                </View>
+                <View style={[styles.adjustingContentToRow, styles.rewardImageTextVerticalSeparator]}>
+                    <View style={styles.trophyContainer}>
+                        <Icon name="trophy" size={40} color="#f2c94c" />
+                    </View>
+                    <View style={styles.rewardImageTextSeparator}>
+                        <Text style={[styles.titleTextSize, styles.textColorAndWeight]}>
+                            Completar o cadastro
+                        </Text>
+                        <Text style={styles.rewardTextDescription}>
+                            50 pontos
+                        </Text>
+                    </View>
+                </View>
+                <View style={[styles.adjustingContentToRow, styles.rewardImageTextVerticalSeparator]}>
+                    <View style={styles.trophyContainer}>
+                        <Icon name="trophy" size={40} color="#f2c94c" />
+                    </View>
+                    <View style={styles.rewardImageTextSeparator}>
+                        <Text style={[styles.titleTextSize, styles.textColorAndWeight]}>
+                            Completar o cadastro
+                        </Text>
+                        <Text style={styles.rewardTextDescription}>
+                            50 pontos
+                        </Text>
+                    </View>
+                </View>
+                <View style={[styles.adjustingContentToRow, styles.rewardImageTextVerticalSeparator]}>
+                    <View style={styles.trophyContainer}>
+                        <Icon name="trophy" size={40} color="#f2c94c" />
+                    </View>
+                    <View style={styles.rewardImageTextSeparator}>
+                        <Text style={[styles.titleTextSize, styles.textColorAndWeight]}>
+                            Completar o cadastro
+                        </Text>
+                        <Text style={styles.rewardTextDescription}>
+                            50 pontos
+                        </Text>
+                    </View>
+                </View>
+                <View style={[styles.adjustingContentToRow, styles.rewardImageTextVerticalSeparator]}>
+                    <View style={styles.trophyContainer}>
+                        <Icon name="trophy" size={40} color="#f2c94c" />
+                    </View>
+                    <View style={styles.rewardImageTextSeparator}>
+                        <Text style={[styles.titleTextSize, styles.textColorAndWeight]}>
+                            Completar o cadastro
+                        </Text>
+                        <Text style={styles.rewardTextDescription}>
+                            50 pontos
+                        </Text>
                     </View>
                 </View>
             </ScrollView>
@@ -77,5 +290,4 @@ function Rewards({ navigation, ...props }) {
     );
 };
 
-export default Rewards;
-
+export default EndToEnd;
