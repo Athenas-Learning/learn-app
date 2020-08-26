@@ -4,6 +4,7 @@ import React, {useState, useEffect} from 'react';
 
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import messaging from '@react-native-firebase/messaging';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -15,7 +16,8 @@ import {SignupScreen} from './src/screens/SignupScreen/SignupScreen';
 import {PasswordRecoveryScreen} from './src/screens/PasswordRecoveryScreen/PasswordRecoveryScreen';
 import {LearnScreen} from './src/screens/LearnScreen/LearnScreen';
 import {AuthContext} from './src/services/AuthService';
-import { navigationRef, isReadyRef } from './src/services/NavigationService';
+import {navigationRef, isReadyRef} from './src/services/NavigationService';
+import {requestUserPermission} from './src/services/NotificationService';
 
 const Stack = createStackNavigator();
 
@@ -23,6 +25,8 @@ const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [initialRoute, setInitialRoute] = useState('Intro');
+  const [notificationToken, setNotificationToken] = useState(null);
 
   const onUserChangedAsync = async (userData) => {
     try {
@@ -39,7 +43,10 @@ const App = () => {
           providerId: userData.providerId,
           uid: userData.uid,
         };
-        await firestore().collection('users').doc(data.uid).set(data);
+        await firestore()
+          .collection('users')
+          .doc(data.uid)
+          .set(data, {merge: true});
       }
     } catch (error) {
       console.error(error);
@@ -47,10 +54,79 @@ const App = () => {
   };
 
   const onAuthStateChangedAsync = async (authData) => {
-    if (authData && authData.uid) setIsAuthenticated(true);
-    else setIsAuthenticated(false);
+    if (authData && authData.uid) {
+      setIsAuthenticated(true);
+      setInitialRoute('Learn');
+    } else setIsAuthenticated(false);
     setUser(authData);
   };
+
+  const initializeNotifications = async () => {
+    await requestUserPermission();
+
+    messaging().onNotificationOpenedApp((remoteMessage) => {
+      if (remoteMessage?.data?.action === 'navigate') {
+        console.log(
+          'Notification caused app to open from background state:',
+          remoteMessage.notification,
+        );
+        navigationRef.current.navigate(remoteMessage.data.type);
+      }
+    });
+
+    messaging()
+      .getInitialNotification()
+      .then((remoteMessage) => {
+        if (remoteMessage?.data?.action === 'navigate') {
+          console.log(
+            'Notification caused app to open from quit state:',
+            remoteMessage.notification,
+          );
+          if (isAuthenticated) setInitialRoute(remoteMessage.data.type); // e.g. "Settings"
+        }
+      });
+
+    messaging().setBackgroundMessageHandler(async (remoteMessage) => {
+      console.log('Message handled in the background!', remoteMessage);
+    });
+
+    const unsubscribe = messaging().onMessage(async (remoteMessage) => {
+      console.log('FCM Message Data:', remoteMessage.data);
+    });
+
+    const token = await messaging().getToken();
+    setNotificationToken(token);
+
+    return unsubscribe;
+  };
+
+  useEffect(() => {
+    const asyncRun = async () => {
+      try {
+        return await initializeNotifications();
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    asyncRun();
+  }, []);
+
+  useEffect(() => {
+    const asyncRun = async () => {
+      if (notificationToken && user?.id) {
+        try {
+          await firestore()
+            .collection('users')
+            .doc(user.uid)
+            .set({messagingToken: notificationToken}, {merge: true});
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    };
+    asyncRun();
+    return ()=>{};
+  }, [notificationToken, user]);
 
   useEffect(() => {
     return auth().onUserChanged(onUserChangedAsync);
@@ -67,12 +143,12 @@ const App = () => {
   return (
     <AuthContext.Provider value={user}>
       <NavigationContainer
-      ref={navigationRef}
-      onReady={() => {
-        isReadyRef.current = true;
-      }}
-    >
+        ref={navigationRef}
+        onReady={() => {
+          isReadyRef.current = true;
+        }}>
         <Stack.Navigator
+          initialRouteName={initialRoute}
           screenOptions={{
             headerStyle: {
               backgroundColor: '#fff',
