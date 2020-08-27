@@ -31,7 +31,7 @@ function Step2({ navigation, ...props }) {
                     <Text style={styles.complementaryVideosTextSeparator}>Conhecendo o Sistema Solar -{'\n'}Descomplicando a Astronomia</Text>
                     <Text style={styles.complementaryVideosTextSeparator}>289.000 visualizações - Postado há 1 ano</Text>
                 </View>
-                <RectButton style={styles.nextStepButton} onPress={() => navigation.navigate('ClassStarRating')}>
+                <RectButton style={styles.nextStepButton} onPress={() => navigation.navigate('Quiz')}>
                     <Text style={styles.nextStepButtonText}>Próximo</Text>
                 </RectButton>
             </ScrollView>
