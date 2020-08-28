@@ -33,27 +33,23 @@ const App = () => {
   const [notificationToken, setNotificationToken] = useState(null);
 
   const onUserChangedAsync = async (userData) => {
-    try {
-      setUser(userData);
-      if (userData && userData.uid) {
-        const data = {
-          displayName: userData.displayName,
-          email: userData.email,
-          emailVerified: userData.emailVerified,
-          isAnonymous: userData.isAnonymous,
-          metadata: userData.metadata,
-          phoneNumber: userData.phoneNumber,
-          photoURL: userData.photoURL,
-          providerId: userData.providerId,
-          uid: userData.uid,
-        };
-        await firestore()
-          .collection('users')
-          .doc(data.uid)
-          .set(data, {merge: true});
-      }
-    } catch (error) {
-      console.error(error);
+    setUser(userData);
+    if (userData && userData.uid) {
+      const data = {
+        displayName: userData.displayName,
+        email: userData.email,
+        emailVerified: userData.emailVerified,
+        isAnonymous: userData.isAnonymous,
+        metadata: userData.metadata,
+        phoneNumber: userData.phoneNumber,
+        photoURL: userData.photoURL,
+        providerId: userData.providerId,
+        uid: userData.uid,
+      };
+      await firestore()
+        .collection('users')
+        .doc(data.uid)
+        .set(data, {merge: true});
     }
   };
 
@@ -65,7 +61,6 @@ const App = () => {
       crashlytics().log('User signed in.');
       await Promise.all([
         crashlytics().setUserId(authData.uid),
-        //crashlytics().setAttribute('credits', String(user.credits)),
         crashlytics().setAttributes({
           email: authData.email,
           displayName: authData.displayName,
@@ -116,11 +111,7 @@ const App = () => {
 
   useEffect(() => {
     const asyncRun = async () => {
-      try {
-        return await initializeNotifications();
-      } catch (error) {
-        console.log(error);
-      }
+      return await initializeNotifications();
     };
     asyncRun();
   }, []);
