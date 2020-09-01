@@ -1,24 +1,32 @@
 import React from 'react';
-import { View, SafeAreaView, Text, StyleSheet, Image } from 'react-native';
+import { View, SafeAreaView, Text, StyleSheet, Image, ImageBackground } from 'react-native';
 import { BorderlessButton } from 'react-native-gesture-handler';
 
-import thirtyProgressStatus from '../../../../assets/images/30progressStatus.png';
-import thirtyProgressBar from '../../../../assets/images/thirtyPercentProgressBar.png';
+import thirtyProgressStatus from '../assets/images/30progressStatus.png';
+import loadingHexagonImg from '../assets/images/loadingHexagons.png';
+import thirtyProgressBar from '../assets/images/thirtyPercentProgressBar.png';
 
-function ProgressInsideClass({ navigation, ...props }) {
+const test = { uri: "https://imgur.com/9vILMcS" };
+
+function ProgressInsideClass({ navigation, route, headline, subtitle, ...props }) {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.progressContentWrapper}>
                 <View style={styles.progressTitle}>
                     <Text style={styles.mainProgressTitleText}>
-                        Vamos lá, Lucas!
+                        {route.params.headline}
                     </Text>
                     <Text style={styles.secondaryProgressTitleText}>
-                        Você ainda está começando...
-                </Text>
+                        {route.params.subtitle}
+                    </Text>
                 </View>
-                <Image source={thirtyProgressStatus} style={styles.progressImgContainer} />
 
+                <ImageBackground
+                    source={loadingHexagonImg}
+                    style={styles.progressImgContainer}
+                >
+                    <Text>30%</Text>
+                </ImageBackground>
                 <View style={styles.progressBarContainer}>
                     <Image source={thirtyProgressBar} />
                     <BorderlessButton style={styles.nextButton}>
@@ -56,6 +64,10 @@ const styles = StyleSheet.create({
     progressImgContainer: {
         marginVertical: 68,
         alignSelf: 'center',
+        height: 240,
+        width: 240,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     progressBarContainer: {
         alignItems: 'center',

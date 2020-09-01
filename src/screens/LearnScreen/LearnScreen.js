@@ -14,6 +14,7 @@ import EditProfile from '../EditProfile/index';
 import Rewards from '../Rewards/index';
 import ClassStarRating from '../ClassStarRating/index';
 import Quiz from '../Quiz/index';
+import ProgressInsideClass from '../../components/ProgressInsideClass';
 
 import { AuthContext } from '../../services/AuthService';
 
@@ -41,6 +42,7 @@ const LearnScreen = () => {
       <Drawer.Screen name="Rewards" component={Rewards} options={{ title: 'Passo a passo' }} />
       <Drawer.Screen name="ClassStarRating" component={ClassStarRating} options={{ title: 'Passo a passo' }} />
       <Drawer.Screen name="Quiz" component={Quiz} options={{ title: 'Passo a passo' }} />
+      <Drawer.Screen name="ProgressInsideClass" component={ProgressInsideClass} options={{ title: 'Passo a passo' }} />
     </Drawer.Navigator>
   );
 };

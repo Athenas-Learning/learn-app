@@ -5,9 +5,9 @@ import { RectButton, ScrollView } from 'react-native-gesture-handler';
 import videoPlayerImg from '../../../../assets/images/video_player.png';
 
 import { Header } from '../../../../components/Header';
+import FixedMenuBar from '../../../../components/FixedMenuBar';
 
 import styles from './styles';
-import FixedMenuBar from '../../../../components/FixedMenuBar';
 
 function Step2({ navigation, ...props }) {
     return (
@@ -31,7 +31,7 @@ function Step2({ navigation, ...props }) {
                     <Text style={styles.complementaryVideosTextSeparator}>Conhecendo o Sistema Solar -{'\n'}Descomplicando a Astronomia</Text>
                     <Text style={styles.complementaryVideosTextSeparator}>289.000 visualizações - Postado há 1 ano</Text>
                 </View>
-                <RectButton style={styles.nextStepButton} onPress={() => navigation.navigate('Quiz')}>
+                <RectButton style={styles.nextStepButton} onPress={() => navigation.navigate('ProgressInsideClass', { headline: "Vamos lá, Lucas!", subtitle: " Você ainda está começando..." })}>
                     <Text style={styles.nextStepButtonText}>Próximo</Text>
                 </RectButton>
             </ScrollView>
