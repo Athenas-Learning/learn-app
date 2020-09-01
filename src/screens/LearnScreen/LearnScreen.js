@@ -35,6 +35,7 @@ const LearnScreen = () => {
       <Drawer.Screen name="ChooseTheme" component={ChooseTheme} options={{ title: 'Temas' }} />
       <Drawer.Screen name="ChooseContentStyle" options={{ title: 'Estilos' }} component={ChooseContentStyle} />
       <Drawer.Screen name="EndToEnd" component={EndToEnd} options={{ title: 'Ponta a ponta' }} />
+<<<<<<< HEAD
       <Drawer.Screen name="Step1" component={Step1} options={{ title: 'Passo a passo' }} />
       <Drawer.Screen name="Step2" component={Step2} options={{ title: 'Passo a passo' }} />
       <Drawer.Screen name="Step3" component={Step3} options={{ title: 'Passo a passo' }} />
@@ -43,6 +44,15 @@ const LearnScreen = () => {
       <Drawer.Screen name="ClassStarRating" component={ClassStarRating} options={{ title: 'Passo a passo' }} />
       <Drawer.Screen name="Quiz" component={Quiz} options={{ title: 'Passo a passo' }} />
       <Drawer.Screen name="ProgressInsideClass" component={ProgressInsideClass} options={{ title: 'Passo a passo' }} />
+=======
+      <Drawer.Screen name="Step1" component={Step1} options={{ title: 'Passo 1' }} />
+      <Drawer.Screen name="Step2" component={Step2} options={{ title: 'Passo 2' }} />
+      <Drawer.Screen name="Step3" component={Step3} options={{ title: 'Passo 3' }} />
+      <Drawer.Screen name="EditProfile" component={EditProfile} options={{ title: 'Perfil' }} />
+      <Drawer.Screen name="Rewards" component={Rewards} options={{ title: 'Conquistas' }} />
+      <Drawer.Screen name="ClassStarRating" component={ClassStarRating} options={{ title: 'Opinião' }} />
+      <Drawer.Screen name="Quiz" component={Quiz} options={{ title: 'Quiz' }} />
+>>>>>>> 1dc04e525f5a955d038b3e84a5f99728a17c10e2
     </Drawer.Navigator>
   );
 };

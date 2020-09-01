@@ -18,31 +18,31 @@ const IntroScreen = ({navigation, ...props}) => {
     swiperRef.current.scrollBy(1);
   };
   return (
-    <View style={styles.root}>
-      <Skip onSkipPress={() => navigation.navigate('Login')} />
-      <Swiper
-        ref={swiperRef}
-        style={styles.wrapper}
-        showsButtons={true}
-        //index={step}
-        loop={false}>
-        <View style={styles.slide}>
-          <Step01Screen onNextStepPress={handleNextStep} />
-        </View>
-        <View style={styles.slide}>
-          <Step02Screen
-            onPreviousStepPress={handlePreviousStep}
-            onNextStepPress={handleNextStep}
-          />
-        </View>
-        <View style={styles.slide}>
-          <Step03Screen
-            onPreviousStepPress={handlePreviousStep}
-            onNextStepPress={() => navigation.navigate('Login')}
-          />
-        </View>
-      </Swiper>
-    </View>
+      <View style={styles.root}>
+        <Skip onSkipPress={() => navigation.navigate('Login')} />
+        <Swiper
+          ref={swiperRef}
+          style={styles.wrapper}
+          showsButtons={true}
+          //index={step}
+          loop={false}>
+          <View style={styles.slide}>
+            <Step01Screen onNextStepPress={handleNextStep} />
+          </View>
+          <View style={styles.slide}>
+            <Step02Screen
+              onPreviousStepPress={handlePreviousStep}
+              onNextStepPress={handleNextStep}
+            />
+          </View>
+          <View style={styles.slide}>
+            <Step03Screen
+              onPreviousStepPress={handlePreviousStep}
+              onNextStepPress={() => navigation.navigate('Login')}
+            />
+          </View>
+        </Swiper>
+      </View>
   );
 };
 

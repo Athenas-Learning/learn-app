@@ -5,6 +5,7 @@ import React, {useState, useEffect} from 'react';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import messaging from '@react-native-firebase/messaging';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -18,8 +19,11 @@ import {LearnScreen} from './src/screens/LearnScreen/LearnScreen';
 import {AuthContext} from './src/services/AuthService';
 import {navigationRef, isReadyRef} from './src/services/NavigationService';
 import {requestUserPermission} from './src/services/NotificationService';
+import {initializeErrorHandler} from './src/services/ErrorService';
+import {ErrorHandler} from './src/components/ErrorBoundary';
 
 const Stack = createStackNavigator();
+initializeErrorHandler();
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -29,27 +33,23 @@ const App = () => {
   const [notificationToken, setNotificationToken] = useState(null);
 
   const onUserChangedAsync = async (userData) => {
-    try {
-      setUser(userData);
-      if (userData && userData.uid) {
-        const data = {
-          displayName: userData.displayName,
-          email: userData.email,
-          emailVerified: userData.emailVerified,
-          isAnonymous: userData.isAnonymous,
-          metadata: userData.metadata,
-          phoneNumber: userData.phoneNumber,
-          photoURL: userData.photoURL,
-          providerId: userData.providerId,
-          uid: userData.uid,
-        };
-        await firestore()
-          .collection('users')
-          .doc(data.uid)
-          .set(data, {merge: true});
-      }
-    } catch (error) {
-      console.error(error);
+    setUser(userData);
+    if (userData && userData.uid) {
+      const data = {
+        displayName: userData.displayName,
+        email: userData.email,
+        emailVerified: userData.emailVerified,
+        isAnonymous: userData.isAnonymous,
+        metadata: userData.metadata,
+        phoneNumber: userData.phoneNumber,
+        photoURL: userData.photoURL,
+        providerId: userData.providerId,
+        uid: userData.uid,
+      };
+      await firestore()
+        .collection('users')
+        .doc(data.uid)
+        .set(data, {merge: true});
     }
   };
 
@@ -57,6 +57,15 @@ const App = () => {
     if (authData && authData.uid) {
       setIsAuthenticated(true);
       setInitialRoute('Learn');
+
+      crashlytics().log('User signed in.');
+      await Promise.all([
+        crashlytics().setUserId(authData.uid),
+        crashlytics().setAttributes({
+          email: authData.email,
+          displayName: authData.displayName,
+        }),
+      ]);
     } else setIsAuthenticated(false);
     setUser(authData);
   };
@@ -102,11 +111,7 @@ const App = () => {
 
   useEffect(() => {
     const asyncRun = async () => {
-      try {
-        return await initializeNotifications();
-      } catch (error) {
-        console.log(error);
-      }
+      return await initializeNotifications();
     };
     asyncRun();
   }, []);
@@ -125,7 +130,7 @@ const App = () => {
       }
     };
     asyncRun();
-    return ()=>{};
+    return () => {};
   }, [notificationToken, user]);
 
   useEffect(() => {
@@ -141,65 +146,67 @@ const App = () => {
   if (isLoading || (isAuthenticated && !user)) return <SplashScreen />;
 
   return (
-    <AuthContext.Provider value={user}>
-      <NavigationContainer
-        ref={navigationRef}
-        onReady={() => {
-          isReadyRef.current = true;
-        }}>
-        <Stack.Navigator
-          initialRouteName={initialRoute}
-          screenOptions={{
-            headerStyle: {
-              backgroundColor: '#fff',
-            },
-            headerTintColor: '#000',
+    <ErrorHandler>
+      <AuthContext.Provider value={user}>
+        <NavigationContainer
+          ref={navigationRef}
+          onReady={() => {
+            isReadyRef.current = true;
           }}>
-          {!isAuthenticated ? (
-            <>
-              <Stack.Screen
-                name="Intro"
-                options={{
-                  headerShown: false,
-                }}
-                component={IntroScreen}
-              />
-              <Stack.Screen
-                name="Login"
-                options={{
-                  headerShown: false,
-                }}
-                component={LoginScreen}
-              />
-              <Stack.Screen
-                name="Signup"
-                options={{
-                  headerShown: false,
-                }}
-                component={SignupScreen}
-              />
-              <Stack.Screen
-                name="PasswordRecovery"
-                options={{
-                  headerShown: false,
-                }}
-                component={PasswordRecoveryScreen}
-              />
-            </>
-          ) : (
-            <>
-              <Stack.Screen
-                name="Learn"
-                options={{
-                  headerShown: false,
-                }}
-                component={LearnScreen}
-              />
-            </>
-          )}
-        </Stack.Navigator>
-      </NavigationContainer>
-    </AuthContext.Provider>
+          <Stack.Navigator
+            initialRouteName={initialRoute}
+            screenOptions={{
+              headerStyle: {
+                backgroundColor: '#fff',
+              },
+              headerTintColor: '#000',
+            }}>
+            {!isAuthenticated ? (
+              <>
+                <Stack.Screen
+                  name="Intro"
+                  options={{
+                    headerShown: false,
+                  }}
+                  component={IntroScreen}
+                />
+                <Stack.Screen
+                  name="Login"
+                  options={{
+                    headerShown: false,
+                  }}
+                  component={LoginScreen}
+                />
+                <Stack.Screen
+                  name="Signup"
+                  options={{
+                    headerShown: false,
+                  }}
+                  component={SignupScreen}
+                />
+                <Stack.Screen
+                  name="PasswordRecovery"
+                  options={{
+                    headerShown: false,
+                  }}
+                  component={PasswordRecoveryScreen}
+                />
+              </>
+            ) : (
+              <>
+                <Stack.Screen
+                  name="Learn"
+                  options={{
+                    headerShown: false,
+                  }}
+                  component={LearnScreen}
+                />
+              </>
+            )}
+          </Stack.Navigator>
+        </NavigationContainer>
+      </AuthContext.Provider>
+    </ErrorHandler>
   );
 };
 
