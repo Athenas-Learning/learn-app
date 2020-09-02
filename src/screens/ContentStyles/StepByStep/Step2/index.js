@@ -2,6 +2,7 @@ import React from 'react';
 import { SafeAreaView, View, Text, Image } from 'react-native';
 import { RectButton, ScrollView } from 'react-native-gesture-handler';
 
+import thirtyProgressBar from '../../../../assets/images/thirtyPercentProgressBar.png';
 import videoPlayerImg from '../../../../assets/images/video_player.png';
 
 import { Header } from '../../../../components/Header';
@@ -31,12 +32,23 @@ function Step2({ navigation, ...props }) {
                     <Text style={styles.complementaryVideosTextSeparator}>Conhecendo o Sistema Solar -{'\n'}Descomplicando a Astronomia</Text>
                     <Text style={styles.complementaryVideosTextSeparator}>289.000 visualizações - Postado há 1 ano</Text>
                 </View>
-                <RectButton style={styles.nextStepButton} onPress={() => navigation.navigate('ProgressInsideClass', { headline: "Vamos lá, Lucas!", subtitle: " Você ainda está começando..." })}>
+                <RectButton style={styles.nextStepButton} onPress={() => navigation.navigate('ProgressInsideClass', {
+                    image: thirtyProgressBar,
+                    textParams: {
+                        color: "#eee",
+                        headline: "Vamos lá, Lucas!",
+                        subtitle: "Você ainda está começando...",
+                        percentage: "30%",
+                        buttonText: "Continuar",
+                    },
+                    backgroundParams:
+                        { color: "#eb5757", opacityLevel: 0.6 },
+                })}>
                     <Text style={styles.nextStepButtonText}>Próximo</Text>
                 </RectButton>
             </ScrollView>
             <FixedMenuBar />
-        </SafeAreaView>
+        </SafeAreaView >
     )
 }
 

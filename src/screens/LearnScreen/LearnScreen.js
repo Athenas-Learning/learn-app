@@ -14,7 +14,7 @@ import EditProfile from '../EditProfile/index';
 import Rewards from '../Rewards/index';
 import ClassStarRating from '../ClassStarRating/index';
 import Quiz from '../Quiz/index';
-import ProgressInsideClass from '../../components/ProgressInsideClass';
+import ProgressInsideClass from '../../components/ProgressInsideClass/index';
 
 import { AuthContext } from '../../services/AuthService';
 
