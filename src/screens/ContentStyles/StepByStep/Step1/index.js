@@ -31,7 +31,21 @@ function Step1({ navigation, ...props }) {
                 </Text>
                 {/* E aqui termina o texto sobre a Origem do Sitema solar */}
                 <Image source={solarSystemFormationImg} style={[styles.contentSeparator, styles.lastImageSeparator]} />
-                <RectButton style={styles.nextStepButton} onPress={() => navigation.navigate('Step2')}>
+                <RectButton style={styles.nextStepButton} onPress={() => navigation.navigate('ProgressInsideClass', {
+                    textParams: {
+                        color: "#eee",
+                        headline: "Vamos lá, Lucas!",
+                        subtitle: "Você ainda está começando...",
+                        percentage: "30%",
+                        buttonText: "Continuar",
+                    },
+                    navigationParams: {
+                        name: 'Step2',
+                    },
+                    backgroundParams:
+                        { color: '235, 87, 87, 0.6' },
+                    progressBar: 0
+                })}>
                     <Text style={styles.nextStepButtonText}>Próximo</Text>
                 </RectButton>
             </ScrollView>

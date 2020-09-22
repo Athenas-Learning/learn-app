@@ -21,7 +21,7 @@ function ClassStarRating({ navigation, ...props }) {
                 Mas antes, você poderia deixar uma nota sobre o que achou? É bem rapidinho.
             </Text>
             <GeneralStarExample />
-            <RectButton style={styles.finishClassButton}>
+            <RectButton style={styles.finishClassButton} onPress={() => navigation.navigate('Dashboard')}>
                 <Text style={styles.buttonText}>Finalizar</Text>
             </RectButton>
             <FixedMenuBar />

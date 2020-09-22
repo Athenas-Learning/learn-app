@@ -4,21 +4,29 @@ import { BorderlessButton } from 'react-native-gesture-handler';
 
 import loadingHexagonImg from '../../assets/images/loadingHexagons.png';
 import thirtyProgressBar from '../../assets/images/thirtyPercentProgressBar.png';
+import fiftyProgressBar from '../../assets/images/fiftyProgressBar.png';
+import hundredProgressBar from '../../assets/images/hundredProgressBar.png';
 
 import styles from './styles';
 
-function ProgressInsideClass({ navigation, route, backgroundParams, textParams, image, ...props }) {
+function ProgressInsideClass({ navigation, route, backgroundParams, textParams, navigationParams, progressBar, ...props }) {
     const color = route.params.backgroundParams.color
-    const opacity_level = route.params.backgroundParams.opacityLevel
     const text_color = route.params.textParams.color
     const headline = route.params.textParams.headline
     const subtitle = route.params.textParams.subtitle
     const percentage = route.params.textParams.percentage
     const buttonText = route.params.textParams.buttonText
-    const barImg = route.params.image
+    const routeName = route.params.navigationParams.name
+    const actualBar = route.params.progressBar
+
+    const PROGRESS_BAR = [
+        thirtyProgressBar,
+        fiftyProgressBar,
+        hundredProgressBar
+    ]
 
     return (
-        <SafeAreaView style={[styles.container, { backgroundColor: color, opacity: opacity_level }]}>
+        <SafeAreaView style={[styles.container, { backgroundColor: `rgba(${color})` }]}>
             <View style={styles.progressContentWrapper}>
                 <View style={styles.progressTitle}>
                     <Text style={[styles.mainProgressTitleText, { color: text_color }]}>
@@ -36,8 +44,10 @@ function ProgressInsideClass({ navigation, route, backgroundParams, textParams, 
                     <Text style={[styles.mainProgressTitleText, { color: text_color }]}>{percentage}</Text>
                 </ImageBackground>
                 <View style={styles.progressBarContainer}>
-                    <Image source={thirtyProgressBar} />
-                    <BorderlessButton style={styles.nextButton}>
+                    <Image source={PROGRESS_BAR[actualBar]} />
+                    <BorderlessButton style={styles.nextButton} onPress={() => navigation.navigate({
+                        name: routeName
+                    })}>
                         <Text style={[styles.nextButtonText, { color: text_color }]}>{buttonText}</Text>
                     </BorderlessButton>
                 </View>

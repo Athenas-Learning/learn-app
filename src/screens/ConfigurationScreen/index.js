@@ -23,13 +23,8 @@ function ConfigurationScreen({ navigation, ...props }) {
     const [sound, setSound] = useState(true);
     const [contentVisualizationMode, setContentVisualizationMode] = useState('endToEnd');
 
-    function handleSoundState() {
-        if (sound) {
-            return setSound(false);
-        } else {
-            return setSound(true);
-        }
-    }
+    const handleSoundState = () => setSound(!sound)
+
 
     function handleContentVisualizationMode() {
         if (contentVisualizationMode == 'endToEnd') {

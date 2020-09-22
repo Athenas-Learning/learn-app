@@ -1,8 +1,7 @@
-import React from 'react';
-import { SafeAreaView, View, Text, Image } from 'react-native';
-import { RectButton, ScrollView } from 'react-native-gesture-handler';
+import React, { useCallback } from 'react';
+import { Alert, SafeAreaView, View, Text, Image, Linking } from 'react-native';
+import { RectButton, ScrollView, BorderlessButton } from 'react-native-gesture-handler';
 
-import thirtyProgressBar from '../../../../assets/images/thirtyPercentProgressBar.png';
 import videoPlayerImg from '../../../../assets/images/video_player.png';
 
 import { Header } from '../../../../components/Header';
@@ -11,6 +10,21 @@ import FixedMenuBar from '../../../../components/FixedMenuBar';
 import styles from './styles';
 
 function Step2({ navigation, ...props }) {
+    const youtube_url = 'https://www.youtube.com/watch?v=zQvpKm9dCD0'
+
+    const openYouTubeVideo = useCallback(
+        async () => {
+            const supported = await Linking.canOpenURL(youtube_url)
+
+            if (supported) {
+                await Linking.openURL(youtube_url)
+            } else {
+                Alert.alert(`Dont know how to open this URL: ${youtube_url}`)
+            }
+        },
+        [youtube_url],
+    );
+
     return (
         <SafeAreaView style={styles.container}>
             <Header title="Sistema Solar" navigation={navigation} />
@@ -20,29 +34,27 @@ function Step2({ navigation, ...props }) {
                     <RectButton disabled={true} touchSoundDisabled={true} style={[styles.complementaryVideosTitle]}>
                         <Text style={styles.complementaryVideosTitleText}>Vídeos complementares</Text>
                     </RectButton>
-                    <Image source={videoPlayerImg} style={styles.contentSeparator} />
-                    <Text style={[styles.complementaryVideosVideoChannel, styles.complementaryVideosTextSeparator]}>Canal do Schwarza</Text>
-                    <Text style={styles.complementaryVideosTextSeparator}>Conhecendo o Sistema Solar -{'\n'}Descomplicando a Astronomia</Text>
-                    <Text style={styles.complementaryVideosTextSeparator}>289.000 visualizações - Postado há 1 ano</Text>
-                    <RectButton disabled={true} touchSoundDisabled={true} style={[styles.complementaryVideosTitle, styles.contentSeparator]}>
-                        <Text style={styles.complementaryVideosTitleText}>Vídeos complementares</Text>
-                    </RectButton>
-                    <Image source={videoPlayerImg} style={styles.contentSeparator} />
+                    <BorderlessButton onPress={openYouTubeVideo}>
+                        <Image source={videoPlayerImg} style={styles.contentSeparator} />
+                    </BorderlessButton>
                     <Text style={[styles.complementaryVideosVideoChannel, styles.complementaryVideosTextSeparator]}>Canal do Schwarza</Text>
                     <Text style={styles.complementaryVideosTextSeparator}>Conhecendo o Sistema Solar -{'\n'}Descomplicando a Astronomia</Text>
                     <Text style={styles.complementaryVideosTextSeparator}>289.000 visualizações - Postado há 1 ano</Text>
                 </View>
                 <RectButton style={styles.nextStepButton} onPress={() => navigation.navigate('ProgressInsideClass', {
-                    image: thirtyProgressBar,
                     textParams: {
-                        color: "#eee",
+                        color: "#767676",
                         headline: "Vamos lá, Lucas!",
-                        subtitle: "Você ainda está começando...",
-                        percentage: "30%",
+                        subtitle: "Você está indo bem, continue!",
+                        percentage: "50%",
                         buttonText: "Continuar",
                     },
+                    navigationParams: {
+                        name: 'Quiz',
+                    },
                     backgroundParams:
-                        { color: "#eb5757", opacityLevel: 0.6 },
+                        { color: '255, 204, 47, 0.4' },
+                    progressBar: 1
                 })}>
                     <Text style={styles.nextStepButtonText}>Próximo</Text>
                 </RectButton>

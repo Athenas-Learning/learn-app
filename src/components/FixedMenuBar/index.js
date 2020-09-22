@@ -7,24 +7,19 @@ import rocketIcon from '../../assets/images/rocket.png';
 import userIcon from '../../assets/images/user.png';
 
 import styles from './styles';
-import { navigate } from '../../services/NavigationService';
+import { navigate, navigationRef } from '../../services/NavigationService';
 
 const FixedMenuBar = () => {
-  const onHomePress = () => {
-    navigate('Dashboard');
-  };
-
-  const onProfilePress = () => navigate('EditProfile')
 
   return (
     <View style={styles.fixedMenuBar}>
-      <BorderlessButton style={styles.hexagonButton} onPress={onHomePress}>
+      <BorderlessButton style={styles.hexagonButton} onPress={() => navigate('Dashboard')}>
         <Image source={hexagonIcon} />
       </BorderlessButton>
-      <BorderlessButton style={styles.rocketButton}>
+      <BorderlessButton style={styles.rocketButton} onPress={() => navigate('ConfigurationScreen')}>
         <Image source={rocketIcon} />
       </BorderlessButton>
-      <BorderlessButton style={styles.userButton} onPress={onProfilePress}>
+      <BorderlessButton style={styles.userButton} onPress={() => navigate('EditProfile')}>
         <Image source={userIcon} />
       </BorderlessButton>
     </View>

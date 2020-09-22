@@ -26,6 +26,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 10
     },
+    wrongAnswerSelected: {
+        width: '90%',
+        height: 35,
+        backgroundColor: '#eb5757',
+        borderRadius: 50,
+        flexDirection: 'row',
+        alignSelf: 'center',
+        alignItems: 'center',
+        marginBottom: 10
+    },
     optionLetterContainer: {
         width: 30,
         height: 30,

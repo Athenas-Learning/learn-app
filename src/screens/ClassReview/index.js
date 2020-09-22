@@ -20,7 +20,7 @@ function ClassReview({ navigation, ...props }) {
             <View style={styles.retakeContentContainer}>
                 <View style={styles.retakeButtonWrapper}>
                     <Text style={styles.actionDescriptionText}>Ler o conteúdo</Text>
-                    <BorderlessButton>
+                    <BorderlessButton onPress={() => navigation.navigate('Step1')}>
                         <Image source={retakeButtonImg} />
                     </BorderlessButton>
                 </View>
@@ -28,21 +28,23 @@ function ClassReview({ navigation, ...props }) {
             </View>
             <View style={styles.retakeContentContainer}>
                 <View style={styles.retakeButtonWrapper}>
-                    <Text style={styles.actionDescriptionText}>Ler o conteúdo</Text>
-                    <BorderlessButton>
+                    <Text style={styles.actionDescriptionText}>Ver a Playlist</Text>
+                    <BorderlessButton onPress={() => navigation.navigate('Step2')}>
                         <Image source={retakeButtonImg} />
                     </BorderlessButton>
                 </View>
                 <Image source={solarSystemThumb} />
             </View>
             <View style={styles.retakeContentContainer}>
-                <BorderlessButton style={styles.retakeQuizButton}>
+                <BorderlessButton style={styles.retakeQuizButton} onPress={() => navigation.navigate('Quiz')}>
                     <Text style={[styles.actionDescriptionText, styles.textAsAButton]}>Refazer o quiz</Text>
 
                     <Image source={quizImg} style={styles.quizButtonImg} />
                 </BorderlessButton>
             </View>
-            <RectButton style={styles.finishThisContentButton}><Text style={styles.buttonText}>Avançar</Text></RectButton>
+            <RectButton style={styles.finishThisContentButton} onPress={() => navigation.navigate('ClassStarRating')}>
+                <Text style={styles.buttonText}>Avançar</Text>
+            </RectButton>
             <FixedMenuBar />
         </SafeAreaView>
     );

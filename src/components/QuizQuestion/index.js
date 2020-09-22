@@ -6,7 +6,8 @@ import { RectButton } from 'react-native-gesture-handler';
 
 import styles from './styles';
 
-function QuizQuestion({ questionTitle, questionNumber, questionImg, questionOptions, correctAnswer, totalNumberOfQuestions, ...props }) {
+function QuizQuestion({ questionTitle, questionNumber, questionImg, questionOptions, totalNumberOfQuestions, ...props }) {
+
     return (
         <View style={styles.quizQuestionContainer}>
             <View style={styles.setFlexDirectionRow}>
